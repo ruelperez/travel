@@ -116,7 +116,7 @@
 @include('partials.header')
 @include('modal.home.booknow')
 
-<main class="pt-5 mt-5">
+<main class="pt-5 mt-4">
     @yield('content')
 </main>
 
