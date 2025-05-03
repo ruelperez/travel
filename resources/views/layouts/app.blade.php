@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 
     <style>
         .hero {
@@ -33,6 +35,10 @@
         .carousel-caption h5,
         .carousel-caption p {
             color: #000 !important;
+        }
+
+        body, .navbar {
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
 
@@ -70,10 +76,51 @@
         .custom-carousel-control:hover {
             background-color: rgba(255, 255, 255, 0.8);
         }
+
+        #topNavbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1055; /* stays above carousel */
+            background-color: rgba(255, 255, 255, 0.85); /* semi-transparent white */
+            backdrop-filter: blur(10px); /* optional blur for nice effect */
+            border-bottom: 1px solid #ddd;
+        }
+        .badge-soft-primary {
+            background-color: rgba(13, 110, 253, 0.15);
+            color: #0d6efd;
+            border-radius: 999px;
+            padding: 0.35em 0.65em;
+            font-size: 0.75rem;
+        }
+
+        .badge-soft-success {
+            background-color: rgba(25, 135, 84, 0.15);
+            color: #198754;
+            border-radius: 999px;
+            padding: 0.35em 0.65em;
+            font-size: 0.75rem;
+        }
+
+        .badge-soft-danger {
+            background-color: rgba(220, 53, 69, 0.15);
+            color: #dc3545;
+            border-radius: 999px;
+            padding: 0.35em 0.65em;
+            font-size: 0.75rem;
+        }
     </style>
 </head>
-<body>
-@yield('content')
+<body id="appBody" class="bg-white text-dark">
+@include('partials.header')
+@include('modal.home.booknow')
+
+<main class="pt-5 mt-5">
+    @yield('content')
+</main>
+
+@include('partials.footer')
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -96,6 +143,55 @@
         $('#dateRange').on('cancel.daterangepicker', function(ev, picker) {
             $(this).val('');
         });
+    });
+</script>
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const toggleBtn = document.getElementById('themeToggle');
+        const icon = toggleBtn?.querySelector('i');
+        const body = document.body;
+
+        // Load saved theme
+        if (localStorage.getItem('theme') === 'dark') {
+            body.classList.remove('bg-white', 'text-dark');
+            body.classList.add('bg-dark', 'text-white');
+            icon?.classList.replace('bi-moon', 'bi-sun');
+        }
+
+        toggleBtn?.addEventListener('click', function () {
+            const isDark = body.classList.contains('bg-dark');
+
+            body.classList.toggle('bg-dark', !isDark);
+            body.classList.toggle('text-white', !isDark);
+            body.classList.toggle('bg-white', isDark);
+            body.classList.toggle('text-dark', isDark);
+
+            icon?.classList.replace(isDark ? 'bi-sun' : 'bi-moon', isDark ? 'bi-moon' : 'bi-sun');
+            localStorage.setItem('theme', isDark ? 'light' : 'dark');
+        });
+
+        const nav = document.querySelector('.navbar');
+        const links = document.querySelectorAll('.nav-link, .navbar-brand span');
+
+        function applyTheme(isDark) {
+            body.classList.toggle('bg-dark', isDark);
+            body.classList.toggle('text-white', isDark);
+            body.classList.toggle('bg-white', !isDark);
+            body.classList.toggle('text-dark', !isDark);
+
+            nav?.classList.toggle('bg-dark', isDark);
+            nav?.classList.toggle('text-white', isDark);
+            nav?.classList.toggle('bg-white', !isDark);
+            nav?.classList.toggle('text-dark', !isDark);
+
+            links.forEach(link => {
+                link.classList.toggle('text-white', isDark);
+                link.classList.toggle('text-dark', !isDark);
+            });
+        }
     });
 </script>
 @stack('js')
