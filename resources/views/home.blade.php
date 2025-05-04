@@ -28,32 +28,32 @@
         <div class="row align-items-center">
             <!-- Left: Illustration -->
             <div class="col-md-6 text-center">
-                <img src="{{ asset('http://localhost:3000/static/media/our-features.d69027726b5a972c1b17.png') }}" class="img-fluid" alt="Travel Illustration">
+                <img src="{{ asset('img/benefits.png') }}" class="img-fluid" alt="Travel Illustration">
             </div>
 
             <!-- Right: Benefits Text -->
             <div class="col-md-6">
                 <small class="text-uppercase text-muted fw-bold">Benefits</small>
-                <h2 class="fw-bold mb-4">Happening cities</h2>
+                <h3 class="fw-bold mb-4">Trendy destinations</h3>
 
                 <div class="mb-4">
                     <span class="badge small mb-1 badge-soft-primary">
                         Advertising
                     </span>
-                    <h5 class="fw-semibold">Cost-effective advertising</h5>
-                    <p class="text-muted">With a free listing, you can advertise your rental with no upfront costs</p>
+                    <h5 class="fw-semibold">Budget-friendly promotion</h5>
+                    <p class="text-muted">List your rental for free and attract guests without any initial investment.</p>
                 </div>
 
                 <div class="mb-4">
                     <span class="badge small mb-1 badge-soft-success" >Exposure</span>
-                    <h5 class="fw-semibold">Reach millions</h5>
-                    <p class="text-muted">Millions of people are searching for unique places to stay around the world</p>
+                    <h5 class="fw-semibold">Global visibility</h5>
+                    <p class="text-muted">Travelers worldwide are searching for one-of-a-kind accommodations</p>
                 </div>
 
                 <div class="mb-4">
                     <span class="badge small mb-1 badge-soft-danger">Secure</span>
                     <h5 class="fw-semibold">Secure and simple</h5>
-                    <p class="text-muted">A Holiday Lettings listing gives you a secure and easy way to take bookings and payments online</p>
+                    <p class="text-muted">Easily manage bookings and receive payments online with confidence and convenience.</p>
                 </div>
             </div>
         </div>
