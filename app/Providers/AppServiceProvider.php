@@ -19,6 +19,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Xendit::setApiKey(env('xnd_development_ZQHbTphZrHaRyJ2XwxBETeiCqABTVK6MHDz1otjAMu9vAWXNjARkuX69OzO2'));
+        //
     }
 }
