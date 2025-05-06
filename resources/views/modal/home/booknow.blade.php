@@ -64,18 +64,6 @@
                         <input type="text" class="form-control bg-dark text-white border-light" placeholder="Optional">
                     </div>
 
-                    <div class="mb-3">
-                        <label class="form-label d-block">Type</label>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="type" id="hotelOnly" checked>
-                            <label class="form-check-label" for="hotelOnly">Hotel Only</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="type" id="hotelFlight">
-                            <label class="form-check-label" for="hotelFlight">Hotel + Flight</label>
-                        </div>
-                    </div>
-
                     <button type="submit" class="btn btn-warning w-100 fw-bold">SEE AVAILABILITY</button>
                 </form>
             </div>

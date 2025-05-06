@@ -15,10 +15,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
         .hero {
             background: url('https://example.com/your-hero.jpg') no-repeat center center;
             background-size: cover;
@@ -118,6 +121,7 @@
             border-top-right-radius: .5rem;
         }
     </style>
+    @livewireStyles
 </head>
 <body id="appBody" class="bg-white text-dark">
 @include('partials.header')
@@ -130,7 +134,7 @@
 @include('partials.footer')
 
 <!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+{{--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>--}}
 <script>
     $(function () {
         $('#dateRange').daterangepicker({
@@ -201,6 +205,8 @@
         }
     });
 </script>
+@livewireScripts
+
 @stack('js')
 </body>
 </html>
