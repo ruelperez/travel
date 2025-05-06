@@ -110,6 +110,13 @@
             padding: 0.35em 0.65em;
             font-size: 0.75rem;
         }
+        .text-teal {
+            color: #008080;
+        }
+        .card-img-top {
+            border-top-left-radius: .5rem;
+            border-top-right-radius: .5rem;
+        }
     </style>
 </head>
 <body id="appBody" class="bg-white text-dark">

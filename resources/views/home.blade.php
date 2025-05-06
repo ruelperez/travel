@@ -23,6 +23,86 @@
         </button>
     </section>
 
+    <!-- Get the Best Deal Section -->
+    <section class="container my-5">
+        <h4 class="text-center fw-bold mb-5">Get the Best Deal</h4>
+        <div class="row gy-5 gx-4">
+            @php
+                $deals = [
+                    [
+                        'location' => 'Puerto Vallarta',
+                        'image' => 'https://www.vacationdealsallinclusive.com/img/03.b3f8a0bb.webp',
+                        'price' => 599,
+                        'original' => 1042,
+                        'title' => 'Palmar Vallarta All Inclusive'
+                    ],
+                    [
+                        'location' => 'Puerto Vallarta',
+                        'image' => 'https://www.taferresorts.com/images/resorts/garza-blanca-los-cabos.jpg',
+                        'price' => 699,
+                        'original' => 1042,
+                        'title' => 'Grand Riviera Nayarit All Inclusive'
+                    ],
+                    [
+                        'location' => 'Puerto Vallarta',
+                        'image' => 'https://www.taferresorts.com/images/resorts/hotel-mousai.jpg',
+                        'price' => 699,
+                        'original' => 1042,
+                        'title' => 'Grand Vallarta All Inclusive'
+                    ],
+                    [
+                        'location' => 'Puerto Vallarta',
+                        'image' => 'https://www.vacationdealsallinclusive.com/img/03.b3f8a0bb.webp',
+                        'price' => 699,
+                        'original' => 1042,
+                        'title' => 'Grand Nuevo Vallarta All Inclusive'
+                    ],
+                    [
+                        'location' => 'Cabo San Lucas',
+                        'image' => 'https://www.taferresorts.com/images/resorts/garza-blanca-los-cabos.jpg',
+                        'price' => 599,
+                        'original' => 1042,
+                        'title' => 'Palmar Cabo All Inclusive'
+                    ],
+                    [
+                        'location' => 'Cabo San Lucas',
+                        'image' => 'https://www.taferresorts.com/images/resorts/tafer-san-jose.jpg',
+                        'price' => 699,
+                        'original' => 1042,
+                        'title' => 'Grand San Jose All Inclusive'
+                    ],
+                ];
+            @endphp
+
+            @foreach ($deals as $deal)
+                <div class="col-sm-12 col-md-6 col-lg-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="position-relative">
+                            <img src="{{ $deal['image'] }}" class="card-img-top" alt="{{ $deal['title'] }}" style="height: 220px; object-fit: cover;">
+                            <div class="position-absolute top-0 start-0 m-2 badge bg-dark text-white">
+                                <i class="bi bi-geo-alt-fill me-1"></i> {{ $deal['location'] }}
+                            </div>
+                            <div class="position-absolute bottom-0 start-0 w-100 p-2" style="background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);">
+                                <div class="text-white fw-semibold">
+                                    <span class="text-decoration-line-through small">${{ $deal['original'] }}</span>
+                                    <span class="fs-5">${{ $deal['price'] }} <small>USD</small></span>
+                                </div>
+                                <small class="text-white">PER COUPLE</small>
+                            </div>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h6 class="fw-bold text-primary">{{ $deal['title'] }}</h6>
+                            <p class="mb-1 small">5 Days & 4 nights for 2 adults.*</p>
+                            <p class="text-muted small mb-3">*Ask about including children.</p>
+                            <a href="#" class="mt-auto btn btn-sm fw-semibold text-white" style="background: linear-gradient(90deg, #D4145A, #FBB03B);">EXPLORE THIS OFFER</a>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </section>
+
+
     <!-- Benefits Section -->
     <section class="container my-5 py-5">
         <div class="row align-items-center">
