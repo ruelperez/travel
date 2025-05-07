@@ -26,9 +26,11 @@
                     <div class="mb-3">
                         <label class="form-label">Select Resort</label>
                         <select class="form-select bg-dark text-white border-light">
-                            <option selected>Villa del Palmar</option>
-                            <option>Villa La Estancia</option>
-                            <option>Garza Blanca</option>
+                            <option value="puerto-vallarta" selected>Puerto Vallarta</option>
+                            <option value="loreto">Loreto</option>
+                            <option value="cancun">Cancun</option>
+                            <option value="cabo-san-lucas">Cabo San Lucas</option>
+                            <option value="riviera-maya">Riviera Maya</option>
                         </select>
                     </div>
 

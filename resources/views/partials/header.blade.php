@@ -19,19 +19,19 @@
                     <a class="nav-link fw-semibold" href="/">Home</a>
                 </li>
 
-                <!-- Packages Dropdown -->
-                <li class="nav-item dropdown me-md-3">
-                    <a class="nav-link dropdown-toggle fw-semibold" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Vacation Deal
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/puerto-vallarta" wire:navigate>Puerto Vallarta</a></li>
-                        <li><a class="dropdown-item" href="/loreto" wire:navigate>Loreto</a></li>
-                        <li><a class="dropdown-item" href="/cancun" wire:navigate>Cancun</a></li>
-                        <li><a class="dropdown-item" href="/cabo-san-lucas" wire:navigate>Cabo San Lucas</a></li>
-                        <li><a class="dropdown-item" href="/riviera-maya" wire:navigate>Riviera Maya</a></li>
-                    </ul>
-                </li>
+{{--                <!-- Packages Dropdown -->--}}
+{{--                <li class="nav-item dropdown me-md-3">--}}
+{{--                    <a class="nav-link dropdown-toggle fw-semibold" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">--}}
+{{--                        Vacation Deal--}}
+{{--                    </a>--}}
+{{--                    <ul class="dropdown-menu">--}}
+{{--                        <li><a class="dropdown-item" href="/puerto-vallarta" wire:navigate>Puerto Vallarta</a></li>--}}
+{{--                        <li><a class="dropdown-item" href="/loreto" wire:navigate>Loreto</a></li>--}}
+{{--                        <li><a class="dropdown-item" href="/cancun" wire:navigate>Cancun</a></li>--}}
+{{--                        <li><a class="dropdown-item" href="/cabo-san-lucas" wire:navigate>Cabo San Lucas</a></li>--}}
+{{--                        <li><a class="dropdown-item" href="/riviera-maya" wire:navigate>Riviera Maya</a></li>--}}
+{{--                    </ul>--}}
+{{--                </li>--}}
 
                 <!-- Phone -->
                 <li class="nav-item me-md-3">
