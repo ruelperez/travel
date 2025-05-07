@@ -5,13 +5,13 @@
     <section id="heroCarousel" class="carousel slide mt-3" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active position-relative">
-                <img src="https://villacdn.villagroupresorts.com/uploads/special/slider_en/1803/_Chasing_the_Moments_Main_Slider_TVG_1920x1080.jpg" class="d-block w-100 carousel-image" alt="Resort 1">
+                <img src="{{ asset('img/head3.png') }}" class="d-block w-100 carousel-image" alt="Resort 1">
             </div>
             <div class="carousel-item position-relative">
-                <img src="https://villacdn.villagroupresorts.com/uploads/special/slider_en/1818/More-Space-More-Fun-Cabo6.jpg" class="d-block w-100 carousel-image" alt="Resort 2">
+                <img src="{{ asset('img/head2.png') }}" class="d-block w-100 carousel-image" alt="Resort 2">
             </div>
             <div class="carousel-item position-relative">
-                <img src="https://www.velasvallarta.com/resourcefiles/inner-hero-img/things-to-do-hero-st-min.jpg" class="d-block w-100 carousel-image" alt="Resort 3">
+                <img src="{{ asset('img/head1.png') }}" class="d-block w-100 carousel-image" alt="Resort 3">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
