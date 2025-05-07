@@ -22,7 +22,7 @@
                             <h6 class="fw-bold text-primary">{{ $deal['title'] }}</h6>
                             <p class="mb-1 small">5 Days & 4 nights for 2 adults.*</p>
                             <p class="text-muted small mb-3">*Ask about including children.</p>
-                            <a href="#" class="mt-auto btn btn-sm fw-semibold text-white" style="background: linear-gradient(90deg, #D4145A, #FBB03B);">EXPLORE THIS OFFER</a>
+                            <a href="#" class="mt-auto btn btn-sm fw-semibold text-black" style="background: linear-gradient(90deg, #00C9FF, #92FE9D);">EXPLORE THIS OFFER</a>
                         </div>
                     </div>
                 </div>

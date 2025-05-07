@@ -123,7 +123,7 @@
     </style>
     @livewireStyles
 </head>
-<body id="appBody" class="bg-white text-dark">
+<body id="appBody" class="text-dark">
 @include('partials.header')
 @include('modal.home.booknow')
 

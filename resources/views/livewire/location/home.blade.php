@@ -5,18 +5,16 @@
         <div class="row align-items-center">
             <!-- Dropdown -->
             <div class="col-12 col-md-3 mb-2 mb-md-0">
-                <select class="form-select" wire:model.live="location">
-                    <option value="puerto-vallarta">Puerto Vallarta</option>
-                    <option value="loreto">Loreto</option>
-                    <option value="cancun">Cancun</option>
-                    <option value="cabo-san-lucas">Cabo San Lucas</option>
-                    <option value="riviera-maya">Riviera Maya</option>
+                <select class="form-select" wire:model.live="list">
+                    @foreach($location as $dl)
+                        <option value="{{$dl->id}}">{{$dl->location_name}}</option>
+                    @endforeach
                 </select>
             </div>
 
             <!-- Location Name -->
             <div class="col-12 col-md-3" wire:loading.remove>
-                <h3 class="fw-bold">{{ ucwords(str_replace('-', ' ', $location)) }}</h3>
+                <h3 class="fw-bold">{{ ucwords(str_replace('-', ' ', $location_first->location_name)) }}</h3>
             </div>
         </div>
 
@@ -33,6 +31,6 @@
         </div>
     </div>
     <div wire:loading.remove>
-        @livewire("location.$location", [], key($location))
+        @livewire("location.$slug", ['location_id' => $location_first->id], key($slug))
     </div>
 </div>
