@@ -31,6 +31,6 @@
         </div>
     </div>
     <div wire:loading.remove>
-        @livewire("location.$slug", ['location_id' => $location_first->id], key($slug))
+        @livewire('location.index', ['location_id' => $list], key($list))
     </div>
 </div>

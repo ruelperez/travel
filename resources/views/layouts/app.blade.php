@@ -120,6 +120,32 @@
             border-top-left-radius: .5rem;
             border-top-right-radius: .5rem;
         }
+        .btn-teal {
+            background: linear-gradient(to right, #00b4aa, #293462);
+            color: white;
+            border: none;
+        }
+
+        .btn-teal:hover {
+            background: linear-gradient(to right, #009688, #1f294b);
+        }
+
+        .bg-teal {
+            background-color: #00b4aa;
+        }
+
+        .object-cover {
+            object-fit: cover;
+        }
+
+        @media (max-width: 768px) {
+            #dealCarousel {
+                max-width: 90%;
+            }
+            .carousel-inner {
+                height: 450px !important;
+            }
+        }
     </style>
     @livewireStyles
 </head>
