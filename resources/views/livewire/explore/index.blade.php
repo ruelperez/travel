@@ -5,14 +5,18 @@
             <div>
                 <h3 class="fw-bold mb-1">{{$deal->resort_name}} All Inclusive</h3>
                 <p class="text-muted mb-1">
-                    <i class="bi bi-geo-alt-fill text-info"></i> Cabo San Lucas
+                    <i class="bi bi-geo-alt-fill text-info"></i> {{$deal->location->location_name}}
                 </p>
             </div>
             <div class="text-end">
-                <h3 class="fw-bold text-dark">$599 <small class="text-uppercase">usd</small></h3>
+                <h3 class="fw-bold text-dark">${{$deal->price}} <small class="text-uppercase">usd</small></h3>
                 <p class="mb-1">
-                    <del class="text-muted">$1500 USD</del>
-                    <span class="text-success fw-semibold">SAVE 60%</span>
+                    <del class="text-muted">${{$deal->original}} USD</del>
+                    <span class="text-success fw-semibold">
+                        @php $a = $deal->original - $deal->price;
+                              $b= $a / $deal->original;
+                              $c = $b * 100;
+                        @endphp SAVE {{number_format($c, 1)}}%</span>
                 </p>
             </div>
             <div class="ms-md-3 mt-3 mt-md-0">
