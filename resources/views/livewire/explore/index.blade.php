@@ -3,13 +3,13 @@
         <!-- Title and Price Section -->
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4">
             <div>
-                <h2 class="fw-bold mb-1">Palmar Cabo All Inclusive</h2>
+                <h3 class="fw-bold mb-1">{{$deal->resort_name}} All Inclusive</h3>
                 <p class="text-muted mb-1">
                     <i class="bi bi-geo-alt-fill text-info"></i> Cabo San Lucas
                 </p>
             </div>
             <div class="text-end">
-                <h2 class="fw-bold text-dark">$599 <small class="text-uppercase">usd</small></h2>
+                <h3 class="fw-bold text-dark">$599 <small class="text-uppercase">usd</small></h3>
                 <p class="mb-1">
                     <del class="text-muted">$1500 USD</del>
                     <span class="text-success fw-semibold">SAVE 60%</span>
