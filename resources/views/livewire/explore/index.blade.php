@@ -20,7 +20,10 @@
                 </p>
             </div>
             <div class="ms-md-3 mt-3 mt-md-0">
-                <a href="#" class="btn btn-teal px-4 py-2 fw-semibold">GET DEAL NOW!</a>
+                <a href="#" class="btn px-4 py-2 fw-semibold text-dark"
+                   style="background: linear-gradient(135deg, #fff176, #fdd835); border: none;">
+                    GET DEAL NOW!
+                </a>
             </div>
         </div>
 

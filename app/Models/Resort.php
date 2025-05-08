@@ -15,6 +15,8 @@ class Resort extends Model
         'original',
         'type',
         'package',
+        'map',
+        'package_desc',
     ];
 
     public function location()
