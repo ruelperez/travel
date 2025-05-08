@@ -42,11 +42,11 @@
                 </li>
 
                 <!-- Book Now Button -->
-                <li class="nav-item me-md-3">
-                    <a href="#" class="btn btn-warning text-white fw-bold px-3 py-1" style="font-size: 0.9rem;" data-bs-toggle="modal" data-bs-target="#bookingModal">
-                        BOOK NOW
-                    </a>
-                </li>
+{{--                <li class="nav-item me-md-3">--}}
+{{--                    <a href="#" class="btn btn-warning text-white fw-bold px-3 py-1" style="font-size: 0.9rem;" data-bs-toggle="modal" data-bs-target="#bookingModal">--}}
+{{--                        BOOK NOW--}}
+{{--                    </a>--}}
+{{--                </li>--}}
             </ul>
         </div>
     </div>

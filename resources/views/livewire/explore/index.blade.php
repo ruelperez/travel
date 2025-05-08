@@ -3,13 +3,13 @@
         <!-- Title and Price Section -->
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4">
             <div>
-                <h3 class="fw-bold mb-1">{{$deal->resort_name}} All Inclusive</h3>
+                <h4 class="fw-bold mb-1">{{$deal->resort_name}} All Inclusive</h4>
                 <p class="text-muted mb-1">
                     <i class="bi bi-geo-alt-fill text-info"></i> {{$deal->location->location_name}}
                 </p>
             </div>
             <div class="text-end">
-                <h3 class="fw-bold text-dark">${{$deal->price}} <small class="text-uppercase">usd</small></h3>
+                <h4 class="fw-bold text-dark">${{$deal->price}} <small class="text-uppercase">usd</small></h4>
                 <p class="mb-1">
                     <del class="text-muted">${{$deal->original}} USD</del>
                     <span class="text-success fw-semibold">
@@ -62,61 +62,82 @@
             </button>
         </div>
         <div class="container my-4" x-data="{ selected: 'location' }">
-            <div class="d-flex flex-column flex-md-row justify-content-center align-items-center fs-6 text-center">
+            <!-- Tabs -->
+            <div class="d-flex flex-row fs-6 text-center align-items-stretch">
                 <div
-                    class="tab-item cursor-pointer user-select-none px-3 py-2 custom-divider-right"
+                    class="tab-item cursor-pointer user-select-none px-4 py-2 border-end border-2 border-dark"
                     :class="selected === 'location' ? 'tab-selected' : ''"
                     @click="selected = 'location'"
-                >Package</div>
-
+                >
+                    Package
+                </div>
                 <div
-                    class="tab-item cursor-pointer user-select-none px-3 py-2 custom-divider-right"
+                    class="tab-item cursor-pointer user-select-none px-4 py-2 border-end border-2 border-dark"
                     :class="selected === 'package' ? 'tab-selected' : ''"
                     @click="selected = 'package'"
-                >Location</div>
-
+                >
+                    Map
+                </div>
                 <div
-                    class="tab-item cursor-pointer user-select-none px-3 py-2"
+                    class="tab-item cursor-pointer user-select-none px-4 py-2"
                     :class="selected === 'room' ? 'tab-selected' : ''"
                     @click="selected = 'room'"
-                >Resort Room</div>
-            </div>
-        </div>
-        <div class="position-relative">
-            <!-- Your tab section goes here -->
-asdfadsffds
-            <!-- Call Widget -->
-            <div class="container my-4" x-data>
-                <div class="card shadow border-0 text-center p-3" style="max-width: 320px; margin-left: auto;">
-                    <!-- Avatar -->
-                    <img src="{{ asset('img/callnow.png') }}" class="rounded-circle mx-auto mb-3" width="100" height="100" alt="Expert">
-                    <!-- Headline -->
-                    <h6 class="text-muted mb-0">Need Help?</h6>
-                    <h5 class="fw-bold mb-3">Talk to a Travel Expert</h5>
-
-                    <hr class="my-2">
-
-                    <!-- Booking Prompt -->
-                    <div class="mb-2">
-                        <h6 class="fw-bold mb-0">Book Today</h6>
-                        <small class="text-muted">Pick your dates later</small>
-                    </div>
-
-                    <!-- Phone -->
-                    <p class="text-danger fw-bold fs-6 mb-3">
-                        <i class="bi bi-telephone-fill me-1"></i> 877 692 3883
-                    </p>
-
-                    <!-- Call Button -->
-                    <a href="tel:8776923883" class="btn text-white fw-semibold w-100"
-                       style="background: linear-gradient(to right, #444, #000); border-radius: 10px;">
-                        CALL NOW
-                    </a>
+                >
+                    Room
                 </div>
             </div>
 
-        </div>
+            <!-- Main Layout -->
+            <div class="row align-items-start mt-4">
+                <!-- Left Column: Dynamic Content -->
+                <div class="col-md-8 mb-4 mb-md-0">
+                    <!-- Package Section -->
+                    <div x-show="selected === 'location'" x-transition>
+                        <h3 style="color: #4B0082">{{ $deal->package }}.</h3>
+                        <p class="text-muted">{{ $deal->package_desc }}</p>
+                    </div>
 
+                    <!-- Map Section -->
+                    <div x-show="selected === 'package'" x-transition>
+                        <div class="ratio ratio-16x9" style="min-height: 350px;">
+                            <iframe
+                                src="{{$deal->map}}"
+                                width="100%" height="300"
+                                style="border:0; width:100%; height:100%; min-height: 350px;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                    </div>
+
+                    <!-- Resort Room Section -->
+                    <div x-show="selected === 'room'" x-transition>
+                        <h4 class="mb-3">Resort Room</h4>
+                        <p class="text-muted">Details about the resort room go here.</p>
+                    </div>
+                </div>
+
+                <!-- Right Column: Call Widget (Always visible) -->
+                <div class="col-md-4">
+                    <div class="card shadow border-0 text-center p-3">
+                        <img src="{{ asset('img/callnow.png') }}" class="rounded-circle mx-auto mb-3" width="100" height="100" alt="Expert">
+                        <h6 class="text-muted mb-0">Need Help?</h6>
+                        <h5 class="fw-bold mb-3">Talk to a Travel Expert</h5>
+                        <hr class="my-2">
+                        <div class="mb-2">
+                            <h6 class="fw-bold mb-0">Book Today</h6>
+                            <small class="text-muted">Pick your dates later</small>
+                        </div>
+                        <p class="text-danger fw-bold fs-6 mb-3">
+                            <i class="bi bi-telephone-fill me-1"></i> 877 692 3883
+                        </p>
+                        <a href="tel:8776923883" class="btn text-white fw-semibold w-100"
+                           style="background: linear-gradient(to right, #444, #000); border-radius: 10px;">
+                            CALL NOW
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 

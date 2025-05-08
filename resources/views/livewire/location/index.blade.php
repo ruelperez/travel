@@ -1,6 +1,6 @@
 <div>
     <!-- Get the Best Deal Section -->
-    <section class="container my-5">
+    <section class="container mb-5">
         <div class="row gy-5 gx-4">
             @foreach ($deals as $deal)
                 <div class="col-sm-12 col-md-6 col-lg-4">

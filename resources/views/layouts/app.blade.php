@@ -25,6 +25,7 @@
         .tab-selected {
             font-weight: bold;
             transform: scale(1.1);
+            transition: all 0.2s ease;
         }
         .custom-divider-right {
             border-right: 1px solid black;
