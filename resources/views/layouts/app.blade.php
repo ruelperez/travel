@@ -15,10 +15,20 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-
+    <script src="//unpkg.com/alpinejs" defer></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
+        .tab-scale {
+            transition: all 0.2s ease;
+        }
+        .tab-selected {
+            font-weight: bold;
+            transform: scale(1.1);
+        }
+        .custom-divider-right {
+            border-right: 1px solid black;
+        }
         body {
             font-family: 'Poppins', sans-serif;
         }

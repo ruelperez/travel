@@ -22,5 +22,9 @@ class Resort extends Model
         return $this->belongsTo(Location::class);
     }
 
+    public function resort_pic(){
+        return $this->hasMany(ResortPic::class);
+    }
+
     use HasFactory;
 }

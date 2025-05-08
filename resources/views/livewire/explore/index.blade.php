@@ -22,16 +22,16 @@
 
         <!-- Desktop View: Grid (3 Columns) -->
         <div class="row d-none d-md-flex justify-content-center">
-            @for ($i = 1; $i <= 3; $i++)
+            @foreach($img_path as $path)
                 <div class="col-md-4 mb-4 d-flex justify-content-center">
                     <div class="position-relative rounded overflow-hidden" style="width: 450px; height: 450px;">
-                        <img src="{{asset('img/palmar'.$i.'.png')}}" class="w-100 h-100 object-cover" alt="Image {{ $i }}">
-                        <div class="position-absolute top-0 start-0 bg-teal text-white p-2 fw-semibold rounded-end mt-2 ms-2">
-                            SAVE NOW <br><span class="fw-normal small">Travel Later</span>
-                        </div>
+                        <img src="{{asset($path->image)}}" class="w-100 h-100 object-cover">
+{{--                        <div class="position-absolute top-0 start-0 bg-teal text-white p-2 fw-semibold rounded-end mt-2 ms-2">--}}
+{{--                            SAVE NOW <br><span class="fw-normal small">Travel Later</span>--}}
+{{--                        </div>--}}
                     </div>
                 </div>
-            @endfor
+            @endforeach
         </div>
 
         <!-- Mobile View: Carousel -->
@@ -54,6 +54,62 @@
                 <span class="carousel-control-next-icon bg-dark rounded-circle p-2"></span>
             </button>
         </div>
+        <div class="container my-4" x-data="{ selected: 'location' }">
+            <div class="d-flex flex-column flex-md-row justify-content-center align-items-center fs-6 text-center">
+                <div
+                    class="tab-item cursor-pointer user-select-none px-3 py-2 custom-divider-right"
+                    :class="selected === 'location' ? 'tab-selected' : ''"
+                    @click="selected = 'location'"
+                >Package</div>
+
+                <div
+                    class="tab-item cursor-pointer user-select-none px-3 py-2 custom-divider-right"
+                    :class="selected === 'package' ? 'tab-selected' : ''"
+                    @click="selected = 'package'"
+                >Location</div>
+
+                <div
+                    class="tab-item cursor-pointer user-select-none px-3 py-2"
+                    :class="selected === 'room' ? 'tab-selected' : ''"
+                    @click="selected = 'room'"
+                >Resort Room</div>
+            </div>
+        </div>
+        <div class="position-relative">
+            <!-- Your tab section goes here -->
+asdfadsffds
+            <!-- Call Widget -->
+            <div class="container my-4" x-data>
+                <div class="card shadow border-0 text-center p-3" style="max-width: 320px; margin-left: auto;">
+                    <!-- Avatar -->
+                    <img src="{{ asset('img/callnow.png') }}" class="rounded-circle mx-auto mb-3" width="100" height="100" alt="Expert">
+                    <!-- Headline -->
+                    <h6 class="text-muted mb-0">Need Help?</h6>
+                    <h5 class="fw-bold mb-3">Talk to a Travel Expert</h5>
+
+                    <hr class="my-2">
+
+                    <!-- Booking Prompt -->
+                    <div class="mb-2">
+                        <h6 class="fw-bold mb-0">Book Today</h6>
+                        <small class="text-muted">Pick your dates later</small>
+                    </div>
+
+                    <!-- Phone -->
+                    <p class="text-danger fw-bold fs-6 mb-3">
+                        <i class="bi bi-telephone-fill me-1"></i> 877 692 3883
+                    </p>
+
+                    <!-- Call Button -->
+                    <a href="tel:8776923883" class="btn text-white fw-semibold w-100"
+                       style="background: linear-gradient(to right, #444, #000); border-radius: 10px;">
+                        CALL NOW
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
     </div>
 </div>
 
