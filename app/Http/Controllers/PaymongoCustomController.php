@@ -48,10 +48,7 @@ class PaymongoCustomController extends Controller
             ]);
 
         if (!$intentResponse->successful()) {
-            return response()->json([
-                'error' => 'Payment Intent creation failed.',
-                'details' => $intentResponse->json()
-            ], 400);
+            return redirect()->route('payment.failed')->with('error', 'Payment Intent creation failed.');
         }
 
         $intentId = $intentResponse['data']['id'];
@@ -86,10 +83,7 @@ class PaymongoCustomController extends Controller
             ]);
 
         if (!$paymentMethodResponse->successful()) {
-            return response()->json([
-                'error' => 'Payment Method creation failed.',
-                'details' => $paymentMethodResponse->json()
-            ], 400);
+            return redirect()->route('payment.failed')->with('error', 'Payment Method creation failed.');
         }
 
         $paymentMethodId = $paymentMethodResponse['data']['id'];
@@ -105,22 +99,17 @@ class PaymongoCustomController extends Controller
                 ]
             ]);
 
-        if (!$attachResponse->successful()) {
-            return response()->json([
-                'error' => 'Failed to attach payment method.',
-                'details' => $attachResponse->json()
-            ], 400);
+        if (!$attachResponse->successful()) {dd('successful');
+            return redirect()->route('payment.failed')->with('error', 'Failed to attach payment method.');
         }
 
         $final = $attachResponse['data'];
+        $status = $final['attributes']['status'];
 
-        return response()->json([
-            'message' => '✅ Payment completed successfully.',
-            'status' => $final['attributes']['status'],
-            'payment_id' => $final['id'],
-            'amount' => $final['attributes']['amount'] / 100,
-            'card_used' => $request->card_number,
-            'customer' => $request->only('name', 'email', 'phone')
-        ]);
+        if ($status === 'succeeded') {
+            return redirect()->route('payment.success')->with('success', 'Payment completed successfully.');
+        } else {
+            return redirect()->route('payment.failed')->with('error', 'Payment was not successful.');
+        }
     }
 }

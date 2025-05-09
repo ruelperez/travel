@@ -8,5 +8,14 @@ Route::get('/', function () {
 });
 
 Route::get('/{location}/{resort}/{resort_id}', [\App\Http\Controllers\ExploreController::class, 'page']);
-Route::view('/pay', 'pay');
-Route::post('/pay', [PaymongoCustomController::class, 'charge'])->name('paymongo.charge');
+
+Route::view('/pay', 'pages.payment.pay')->name('pay.form');
+Route::post('/pay_process', [PaymongoCustomController::class, 'charge'])->name('paymongo.charge');
+
+Route::get('/payment-success', function () {
+    return view('pages.payment.success');
+})->name('payment.success');
+
+Route::get('/payment-failed', function () {
+    return view('pages.payment.failed');
+})->name('payment.failed');
