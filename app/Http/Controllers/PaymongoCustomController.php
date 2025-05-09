@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\PaymentReceiptMail;
 
 class PaymongoCustomController extends Controller
 {
@@ -99,14 +101,21 @@ class PaymongoCustomController extends Controller
                 ]
             ]);
 
-        if (!$attachResponse->successful()) {dd('successful');
+        if (!$attachResponse->successful()) {
             return redirect()->route('payment.failed')->with('error', 'Failed to attach payment method.');
         }
 
         $final = $attachResponse['data'];
         $status = $final['attributes']['status'];
-
         if ($status === 'succeeded') {
+            // ✅ Send receipt email
+            Mail::to($request->email)->send(new PaymentReceiptMail([
+                'name' => $request->name,
+                'email' => $request->email,
+                'amount' => $final['attributes']['amount'] / 100,
+                'payment_id' => $final['id'],
+            ]));
+
             return redirect()->route('payment.success')->with('success', 'Payment completed successfully.');
         } else {
             return redirect()->route('payment.failed')->with('error', 'Payment was not successful.');

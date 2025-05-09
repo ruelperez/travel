@@ -83,17 +83,17 @@
 
                         <div class="mb-3">
                             <label class="form-label">Full Name</label>
-                            <input type="text" class="form-control" name="name" value="John Doe" required>
+                            <input type="text" class="form-control" name="name" required>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Email</label>
-                            <input type="email" class="form-control" name="email" value="johndoe@example.com" required>
+                            <input type="email" class="form-control" name="email" required>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Phone Number</label>
-                            <input type="text" class="form-control" name="phone" placeholder="+1 555 123 4567" required>
+                            <input type="text" class="form-control" name="phone"  required>
                         </div>
 
                         <input type="hidden" name="amount" value="1800">

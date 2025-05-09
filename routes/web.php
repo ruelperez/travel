@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\PaymongoCustomController;
+use App\Mail\PaymentReceiptMail;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -19,3 +21,13 @@ Route::get('/payment-success', function () {
 Route::get('/payment-failed', function () {
     return view('pages.payment.failed');
 })->name('payment.failed');
+Route::get('/test-mail', function () {
+    Mail::to('karuelflorperezz@gmail.com')->send(new PaymentReceiptMail([
+        'name' => 'Test User',
+        'email' => 'karuelflorperezz@gmail.com',
+        'amount' => 1800,
+        'payment_id' => 'pi_test_12345'
+    ]));
+
+    return 'Test email sent!';
+});
