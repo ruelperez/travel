@@ -33,9 +33,9 @@ class PaymongoCustomController extends Controller
                 'data' => [
                     'attributes' => [
                         'amount' => $amount,
-                        'payment_method_allowed' => ['card'],
+                        'payment_method_allowed' => ['cards'],
                         'payment_method_options' => [
-                            'card' => ['request_three_d_secure' => 'any']
+                            'cards' => ['request_three_d_secure' => 'any']
                         ],
                         'currency' => 'PHP',
                         'description' => 'Custom Card Payment',
@@ -61,7 +61,7 @@ class PaymongoCustomController extends Controller
             ->post('https://api.paymongo.com/v1/payment_methods', [
                 'data' => [
                     'attributes' => [
-                        'type' => 'card',
+                        'type' => 'cards',
                         'details' => [
                             'card_number' => $request->card_number,
                             'exp_month' => (int) $request->exp_month,

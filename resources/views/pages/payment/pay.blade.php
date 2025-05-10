@@ -38,63 +38,30 @@
                                     </div>
                                     <!-- Billing Address Section -->
                                     <div class="mb-3">
-                                        <label class="form-label">Street Address</label>
-                                        <input type="text" name="billing_street" class="form-control" placeholder="e.g. 123 Palm St." required>
-                                    </div>
-
-                                    <div class="row mb-3">
-                                        <div class="col-md-6">
-                                            <label class="form-label">City</label>
-                                            <input type="text" name="billing_city" class="form-control" required>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label class="form-label">State / Province</label>
-                                            <input type="text" name="billing_state" class="form-control" required>
-                                        </div>
-                                    </div>
-
-                                    <div class="row mb-3">
-                                        <div class="col-md-6">
-                                            <label class="form-label">ZIP / Postal Code</label>
-                                            <input type="text" name="billing_zip" class="form-control" required>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label class="form-label">Country</label>
-                                            <select name="billing_country" class="form-select" required>
-                                                <option value="">Select Country</option>
-                                                <option value="United States">United States</option>
-                                                <option value="Canada">Canada</option>
-                                                <option value="United Kingdom">United Kingdom</option>
-                                                <option value="Australia">Australia</option>
-                                                <option value="Singapore">Singapore</option>
-                                                <option value="Japan">Japan</option>
-                                                <option value="Germany">Germany</option>
-                                                <option value="France">France</option>
-                                                <option value="India">India</option>
-                                                <!-- Add more countries as needed -->
-                                            </select>
-                                        </div>
+                                        <label class="form-label">Billing Address</label>
+                                        <input type="text" name="phone" class="form-control" required>
                                     </div>
                                     <div class="mt-4 border-top pt-3">
-                                        <label class="form-label d-block mb-2">Card Details</label>
+                                        <label class="form-label d-block mb-3">Card Details</label>
 
-                                        <div class="mb-3">
-                                            <input type="text" name="card_number" class="form-control" placeholder="Card Number" required>
+                                        <!-- Card Number -->
+                                        <div class="position-relative mb-3">
+                                            <input type="text" name="card_number" id="card_number" class="form-control pe-5" required>
+                                            <img id="card_icon" src="" alt="Card" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); height: 24px; display: none;">
                                         </div>
 
+                                        <!-- Expiration -->
                                         <div class="row mb-3">
                                             <div class="col-6">
-                                                <input type="text" name="exp_month" class="form-control" placeholder="Exp. Month (MM)" required>
+                                                <input type="text" name="exp_date" id="exp_date" class="form-control" placeholder="MM/YY" maxlength="5" required>
                                             </div>
                                             <div class="col-6">
-                                                <input type="text" name="exp_year" class="form-control" placeholder="Exp. Year (YYYY)" required>
+                                                <input type="text" name="cvc" class="form-control" placeholder="CVC" maxlength="4" required>
                                             </div>
                                         </div>
-
-                                        <div class="mb-3">
-                                            <input type="text" name="cvc" class="form-control" placeholder="CVC" required>
-                                        </div>
                                     </div>
+
+
 
                                     <input type="hidden" name="amount" value="{{ $amount ?? 100 }}">
 
@@ -112,8 +79,7 @@
                                 <h5 class="fw-bold mb-3">Booking Summary</h5>
                                 <hr>
                                 <ul class="list-unstyled mb-2">
-                                    <li><strong>Location:</strong> {{ $location ?? 'Cancun' }}</li>
-                                    <li><strong>Resort:</strong> {{ $resort ?? 'Cancun Palm All Inclusive' }}</li>
+                                    <li><strong>Location:</strong> {{ $location ?? 'Cancun' }} ({{ $resort ?? 'Cancun Palm All Inclusive' }})</li>
                                     <li><strong>Package:</strong> {{ $package ?? '5 Days & 4 Nights for 2 Adults' }}</li>
                                 </ul>
                                 <div class="border-top pt-3 mt-3">
@@ -213,4 +179,125 @@
             margin-bottom: 6px;
         }
     </style>
+@endpush
+@push('js')
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const cardInput = document.getElementById('card_number');
+            cardInput.addEventListener('input', function (e) {
+                let value = e.target.value.replace(/\D/g, '').substring(0, 16);
+                let formatted = value.match(/.{1,4}/g);
+                e.target.value = formatted ? formatted.join(' ') : '';
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const cardInput = document.getElementById('card_number');
+            const typeDisplay = document.getElementById('card_type_display');
+
+            cardInput.addEventListener('input', function (e) {
+                let value = e.target.value.replace(/\D/g, '');
+
+                // Auto-detect cards type
+                let cardType = getCardType(value);
+                typeDisplay.textContent = cardType ? `Card Type: ${cardType}` : '';
+
+                // Limit digits based on cards type
+                let maxLength = (cardType === 'American Express') ? 15 : 16;
+                value = value.substring(0, maxLength);
+
+                // Format input
+                e.target.value = formatCardNumber(value, cardType);
+            });
+
+            function formatCardNumber(number, type) {
+                if (type === 'American Express') {
+                    return number.replace(/^(\d{0,4})(\d{0,6})(\d{0,5}).*/, function (_, g1, g2, g3) {
+                        return [g1, g2, g3].filter(Boolean).join(' ');
+                    });
+                } else {
+                    return number.replace(/(.{4})/g, '$1 ').trim();
+                }
+            }
+
+            function getCardType(number) {
+                if (/^4/.test(number)) return 'Visa';
+                if (/^5[1-5]/.test(number)) return 'Mastercard';
+                if (/^3[47]/.test(number)) return 'American Express';
+                if (/^6(?:011|5)/.test(number)) return 'Discover';
+                return '';
+            }
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const cardInput = document.getElementById('card_number');
+            const cardIcon = document.getElementById('card_icon');
+
+            cardInput.addEventListener('input', function (e) {
+                let value = e.target.value.replace(/\D/g, '');
+                let cardType = getCardType(value);
+
+                // Format card number
+                let maxLength = (cardType === 'American Express') ? 15 : 16;
+                value = value.substring(0, maxLength);
+                e.target.value = formatCardNumber(value, cardType);
+
+                // Update icon
+                const base = '{{ asset('img/cards') }}/';
+                if (cardType === 'Visa') {
+                    cardIcon.src = base + 'visa.png';
+                    cardIcon.style.display = 'inline';
+                } else if (cardType === 'Mastercard') {
+                    cardIcon.src = base + 'mastercard.png';
+                    cardIcon.style.display = 'inline';
+                } else if (cardType === 'American Express') {
+                    cardIcon.src = base + 'amex.png';
+                    cardIcon.style.display = 'inline';
+                } else if (cardType === 'Discover') {
+                    cardIcon.src = base + 'discover.png';
+                    cardIcon.style.display = 'inline';
+                } else {
+                    cardIcon.src = '';
+                    cardIcon.style.display = 'none';
+                }
+            });
+
+            function formatCardNumber(number, type) {
+                if (type === 'American Express') {
+                    return number.replace(/^(\d{0,4})(\d{0,6})(\d{0,5}).*/, (_, g1, g2, g3) =>
+                        [g1, g2, g3].filter(Boolean).join(' ')
+                    );
+                } else {
+                    return number.replace(/(.{4})/g, '$1 ').trim();
+                }
+            }
+
+            function getCardType(number) {
+                if (/^4/.test(number)) return 'Visa';
+                if (/^5[1-5]/.test(number)) return 'Mastercard';
+                if (/^3[47]/.test(number)) return 'American Express';
+                if (/^6(?:011|5)/.test(number)) return 'Discover';
+                return '';
+            }
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const expDateInput = document.getElementById('exp_date');
+
+            expDateInput.addEventListener('input', function (e) {
+                let value = e.target.value.replace(/\D/g, '');
+
+                if (value.length >= 3) {
+                    value = value.substring(0, 4);
+                    value = value.replace(/^(\d{2})(\d{1,2})/, '$1/$2');
+                }
+
+                e.target.value = value;
+            });
+        });
+    </script>
 @endpush
