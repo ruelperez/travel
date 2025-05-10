@@ -4,6 +4,7 @@ use App\Http\Controllers\PaymongoCustomController;
 use App\Mail\PaymentReceiptMail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
 
 Route::get('/', function () {
     return view('pages.location.index');
@@ -11,7 +12,18 @@ Route::get('/', function () {
 
 Route::get('/{location}/{resort}/{resort_id}', [\App\Http\Controllers\ExploreController::class, 'page']);
 
-Route::view('/pay', 'pages.payment.pay')->name('pay.form');
+Route::get('/pay/{location_name}/{resort_name}/{price}/{package}', function ($location_name, $resort_name, $price, $package) {
+    $reference = strtoupper(Str::random(5)) . '-' . now()->format('YmdHis');
+
+    return view('pages.payment.pay', [
+        'location_name' => $location_name,
+        'resort_name' => $resort_name,
+        'price' => $price,
+        'package' => $package,
+        'reference' => $reference,
+    ]);
+})->name('pay.form');
+
 Route::post('/pay_process', [PaymongoCustomController::class, 'charge'])->name('paymongo.charge');
 
 Route::get('/payment-success', function () {

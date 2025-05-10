@@ -79,12 +79,12 @@
                                 <h5 class="fw-bold mb-3">Booking Summary</h5>
                                 <hr>
                                 <ul class="list-unstyled mb-2">
-                                    <li><strong>Location:</strong> {{ $location ?? 'Cancun' }} ({{ $resort ?? 'Cancun Palm All Inclusive' }})</li>
+                                    <li><strong>Location:</strong> {{ $location_name ?? 'None' }} ({{ $resort_name ?? 'None' }})</li>
                                     <li><strong>Package:</strong> {{ $package ?? '5 Days & 4 Nights for 2 Adults' }}</li>
                                 </ul>
                                 <div class="border-top pt-3 mt-3">
                                     <h6 class="">Total Amount</h6>
-                                    <p class="fs-4 text-success mb-0 fw-bold">${{ $amount ?? '100.00' }}</p>
+                                    <p class="fs-4 text-success mb-0 fw-bold">${{ $price ?? '0.0' }}</p>
                                 </div>
 
                                 <div class="mt-4 small text-muted">

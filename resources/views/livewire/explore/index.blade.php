@@ -20,7 +20,7 @@
                 </p>
             </div>
             <div class="ms-md-3 mt-3 mt-md-0">
-                <a href="#" class="btn px-4 py-2 fw-semibold text-dark"
+                <a href="/pay/{{$deal->location->location_name}}/{{$deal->resort_name}}/{{$deal->price}}/{{ $deal->package }}" class="btn px-4 py-2 fw-semibold text-dark"
                    style="background: linear-gradient(135deg, #fff176, #fdd835); border: none;">
                     GET DEAL NOW!
                 </a>
