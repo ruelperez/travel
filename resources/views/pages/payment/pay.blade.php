@@ -17,7 +17,7 @@
                                     <img src="{{ asset('img/logo.png') }}" alt="Company Logo" style="height: 50px;">
                                 </div>
 
-                                <h5 class="mb-1 fw-bold">Booking & Payment Details</h5>
+                                <h5 class="mb-1 fw-bold text-primary">Booking & Payment Details</h5>
                                 <hr>
                                 <form method="POST" action="{{ route('paymongo.charge') }}">
                                     @csrf
@@ -65,7 +65,7 @@
 
                                     <input type="hidden" name="amount" value="{{ $amount ?? 100 }}">
 
-                                    <button type="submit" class="btn btn-primary w-100 mt-3">Proceed</button>
+                                    <button type="submit" class="btn btn-primary w-100 mt-3" disabled>Proceed</button>
                                 </form>
                             </div>
                         </div>
@@ -76,7 +76,7 @@
                         <!-- Booking Summary -->
                         <div class="col-md-5 order-1 order-md-2">
                             <div class="custom-form-box shadow-sm rounded">
-                                <h5 class="fw-bold mb-3">Booking Summary</h5>
+                                <h5 class="fw-bold mb-3 text-primary">Booking Summary</h5>
                                 <hr>
                                 <ul class="list-unstyled mb-2">
                                     <li><strong>Location:</strong> {{ $location_name ?? 'None' }} ({{ $resort_name ?? 'None' }})</li>
