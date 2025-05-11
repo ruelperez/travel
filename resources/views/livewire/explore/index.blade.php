@@ -1,26 +1,44 @@
 <div>
-    <div class="container my-5">
+    <div class="container mb-5 mt-4">
+        <i class="fa-solid fa-less-than me-2"></i>Back
         <!-- Title and Price Section -->
-        <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-start mb-4 mt-2 gap-3">
+            <!-- Resort Info -->
             <div>
-                <h4 class="fw-bold mb-1">{{$deal->resort_name}} All Inclusive</h4>
-                <p class="text-muted mb-1">
-                    <i class="bi bi-geo-alt-fill text-info"></i> {{$deal->location->location_name}}
+                <div class="d-flex align-items-start gap-2 mb-1 flex-wrap">
+                    <h4 class="fw-bold mb-0">{{ ucwords(strtolower($deal->resort_name)) }}</h4>
+                    <span class="text-nowrap">(All Inclusive)</span>
+                </div>
+                <p class="text-muted mb-0">
+                    <i class="bi bi-geo-alt-fill text-info"></i> {{ $deal->location->location_name }}
                 </p>
             </div>
-            <div class="text-end">
-                <h4 class="fw-bold text-dark">${{$deal->price}} <small class="text-uppercase">usd</small></h4>
-                <p class="mb-1">
-                    <del class="text-muted">${{$deal->original}} USD</del>
-                    <span class="text-success fw-semibold">
-                        @php $a = $deal->original - $deal->price;
-                              $b= $a / $deal->original;
-                              $c = $b * 100;
-                        @endphp SAVE {{number_format($c, 1)}}%</span>
-                </p>
+
+            <!-- Price Info -->
+            <div class="text-start text-md-end">
+                <h4 class="fw-bold text-dark mb-1">
+                    ${{ $deal->price }} <small class="text-uppercase">usd</small>
+                </h4>
+
+                <!-- Combine original price and save in one line -->
+                <div class="d-flex align-items-baseline gap-2 flex-wrap">
+                    <del class="text-muted mb-0">${{ $deal->original }} USD</del>
+                    <span class="text-success fw-semibold mb-0">
+            @php
+                $a = $deal->original - $deal->price;
+                $b = $a / $deal->original;
+                $c = $b * 100;
+            @endphp
+            SAVE {{ number_format($c, 1) }}%
+        </span>
+                </div>
             </div>
-            <div class="ms-md-3 mt-3 mt-md-0">
-                <a href="/pay/{{$deal->location->location_name}}/{{$deal->resort_name}}/{{$deal->price}}/{{ $deal->package }}" class="btn px-4 py-2 fw-semibold text-dark"
+
+
+            <!-- Button (centered on mobile only) -->
+            <div class="mt-3 mt-md-0 mx-auto mx-md-0 text-center text-md-start">
+                <a href="/pay/{{ $deal->location->location_name }}/{{ $deal->resort_name }}/{{ $deal->price }}/{{ $deal->package }}"
+                   class="btn px-4 py-2 fw-semibold text-dark"
                    style="background: linear-gradient(135deg, #fff176, #fdd835); border: none;">
                     GET DEAL NOW!
                 </a>
@@ -32,7 +50,7 @@
             @foreach($img_path as $path)
                 <div class="col-md-4 mb-4 d-flex justify-content-center">
                     <div class="position-relative rounded overflow-hidden" style="width: 450px; height: 450px;">
-                        <img src="{{asset($path->image)}}" class="w-100 h-100 object-cover">
+                        <img src="{{asset('img/resort/'.$path->image)}}" class="w-100 h-100 object-cover">
 {{--                        <div class="position-absolute top-0 start-0 bg-teal text-white p-2 fw-semibold rounded-end mt-2 ms-2">--}}
 {{--                            SAVE NOW <br><span class="fw-normal small">Travel Later</span>--}}
 {{--                        </div>--}}
