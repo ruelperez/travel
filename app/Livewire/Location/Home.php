@@ -15,8 +15,8 @@ class Home extends Component
         return view('livewire.location.home');
     }
 
-    public function mount(){
-        $this->location_first = Location::first();
+    public function mount($location_id){
+        $this->location_first = Location::find($location_id);
         $this->list = $this->location_first->id;
     }
 

@@ -1,6 +1,19 @@
 <div>
     <div class="container mb-5 mt-4">
-        <i class="fa-solid fa-less-than me-2"></i>Back
+        <i class="fa-solid fa-less-than me-2"
+           style="
+        cursor: pointer;
+        padding: 6px 10px;
+        border-radius: 50%;
+        background-color: #f0f0f0;
+        transition: background-color 0.3s, box-shadow 0.3s;
+    "
+           onmouseover="this.style.backgroundColor='#e0e0e0'; this.style.boxShadow='0 0 6px rgba(0,0,0,0.15)'"
+           onmouseout="this.style.backgroundColor='#f0f0f0'; this.style.boxShadow='none'"
+           onclick="location.href = '/resort/{{$deal->location_id}}';">
+        </i>
+        <span style="cursor: pointer;" onclick="location.href = '/resort/{{$deal->location_id}}';">Back</span>
+
         <!-- Title and Price Section -->
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-start mb-4 mt-2 gap-3">
             <!-- Resort Info -->

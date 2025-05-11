@@ -7,8 +7,17 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 
 Route::get('/', function () {
-    return view('pages.location.index');
+    return view('pages.location.index', [
+        'location_id' => 1
+    ]);
 });
+
+Route::get('/resort/{location_id}', function ($location_id) {
+    return view('pages.location.index', [
+        'location_id' => $location_id,
+    ]);
+});
+
 
 Route::get('/{location}/{resort}/{resort_id}', [\App\Http\Controllers\ExploreController::class, 'page']);
 

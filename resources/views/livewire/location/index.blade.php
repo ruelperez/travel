@@ -6,7 +6,7 @@
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="card border-0 shadow-sm h-100">
                         <div class="position-relative">
-                            <img src="{{ $deal->image }}" class="card-img-top" alt="{{ $deal->title }}" style="height: 220px; object-fit: cover;">
+                            <img src="{{ asset($deal->image )}}" class="card-img-top" alt="{{ $deal->title }}" style="height: 220px; object-fit: cover;">
                             <div class="position-absolute top-0 start-0 m-2 badge bg-dark text-white">
                                 <i class="bi bi-geo-alt-fill me-1"></i> {{ $deal->location->location_name }}
                             </div>

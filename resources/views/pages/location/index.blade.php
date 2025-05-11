@@ -21,7 +21,7 @@
             <span class="carousel-control-next-icon"></span>
         </button>
     </section>
-    @livewire('location.home')
+    @livewire('location.home',['location_id' => $location_id])
     <!-- Benefits Section -->
     <section class="container my-5 py-5">
         <div class="row align-items-center">

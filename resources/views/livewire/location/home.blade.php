@@ -9,7 +9,7 @@
                         wire:model.live="list"
                         style="background-color: #f0f8ff; border: 1px solid #ccc; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
                     @foreach($location as $dl)
-                        <option value="{{ $dl->id }}">{{ $dl->location_name }}</option>
+                        <option @if($list == $dl->id) selected @endif value="{{ $dl->id }}">{{ $dl->location_name }}</option>
                     @endforeach
                 </select>
             </div>
