@@ -158,6 +158,9 @@
                 height: 400px !important;
             }
         }
+        .overflow-auto::-webkit-scrollbar {
+            display: none;
+        }
     </style>
     @livewireStyles
 </head>
