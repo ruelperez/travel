@@ -114,7 +114,6 @@
                     </div>
                 </div>
 
-
                 <!-- Main Layout -->
                 <div class="row align-items-start mt-4">
                     <!-- Left Column: Dynamic Content -->

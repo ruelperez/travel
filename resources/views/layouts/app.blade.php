@@ -87,7 +87,7 @@
         .custom-carousel-control {
             width: 60px;
             height: 60px;
-            background-color: rgba(0, 0, 0, 0.6);
+            background-color: rgba(255, 255, 255, 0.8);
             border-radius: 50%;
             top: 50%;
             transform: translateY(-50%);
@@ -100,7 +100,7 @@
         }
 
         .custom-carousel-control:hover {
-            background-color: rgba(255, 255, 255, 0.8);
+            background-color: rgba(0, 0, 0, 0.6);
         }
 
         #topNavbar {
