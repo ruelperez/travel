@@ -66,7 +66,7 @@
         }
 
         .carousel-image {
-            height: 560px; /* Reduced from ~700px */
+            height: 400px; /* Reduced from ~700px */
             object-fit: cover;
         }
 
@@ -155,7 +155,7 @@
                 max-width: 90%;
             }
             .carousel-inner {
-                height: 450px !important;
+                height: 400px !important;
             }
         }
     </style>

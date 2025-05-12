@@ -94,27 +94,34 @@
         </div>
         <div class="container my-4" x-data="{ selected: 'location' }">
             <!-- Tabs -->
-            <div class="d-flex flex-row fs-6 text-center align-items-stretch">
+            <div class="d-flex flex-row fs-6 text-center align-items-stretch flex-wrap">
                 <div
-                    class="tab-item cursor-pointer user-select-none px-4 py-2 border-end border-2 border-dark"
+                    class="tab-item cursor-pointer user-select-none px-2 px-md-4 py-2 border-end border-2 border-dark"
                     :class="selected === 'location' ? 'tab-selected' : ''"
                     @click="selected = 'location'"
                 >
                     Package
                 </div>
                 <div
-                    class="tab-item cursor-pointer user-select-none px-4 py-2 border-end border-2 border-dark"
+                    class="tab-item cursor-pointer user-select-none px-2 px-md-4 py-2 border-end border-2 border-dark"
                     :class="selected === 'package' ? 'tab-selected' : ''"
                     @click="selected = 'package'"
                 >
                     Map
                 </div>
                 <div
-                    class="tab-item cursor-pointer user-select-none px-4 py-2"
+                    class="tab-item cursor-pointer user-select-none px-2 px-md-4 py-2 border-end border-2 border-dark"
                     :class="selected === 'room' ? 'tab-selected' : ''"
                     @click="selected = 'room'"
                 >
                     Room
+                </div>
+                <div
+                    class="tab-item cursor-pointer user-select-none px-2 px-md-4 py-2"
+                    :class="selected === 'amenities' ? 'tab-selected' : ''"
+                    @click="selected = 'amenities'"
+                >
+                    Amen.
                 </div>
             </div>
 
@@ -144,6 +151,11 @@
                     <div x-show="selected === 'room'" x-transition>
                         <h4 class="mb-3">Resort Room</h4>
                         <p class="text-muted">Details about the resort room go here.</p>
+                    </div>
+
+                    <!-- Resort Room Section -->
+                    <div x-show="selected === 'amenities'" x-transition>
+                        <p class="text-muted">Details about the resort room go amenities.</p>
                     </div>
                 </div>
 

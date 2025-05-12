@@ -1,10 +1,10 @@
 <div>
     <!-- Filter & Title Section -->
-    <div class="container mt-4 mb-2">
+    <div class="container mb-2">
         <!-- Dropdown and Location Name -->
         <div class="row align-items-center">
             <!-- Dropdown -->
-            <div class="col-12 col-md-3 mb-2 mb-md-0">
+            <div class="col-12 col-md-3 mb-4 mb-md-0">
                 <select class="form-select"
                         wire:model.live="list"
                         style="background-color: #f0f8ff; border: 1px solid #ccc; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">

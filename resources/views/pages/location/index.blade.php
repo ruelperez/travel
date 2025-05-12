@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- Carousel -->
-    <section id="heroCarousel" class="carousel slide mt-3" data-bs-ride="carousel">
+    <section id="heroCarousel" class="carousel slide mt-3 mb-4" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active position-relative">
                 <img src="{{ asset('img/head3.png') }}" class="d-block w-100 carousel-image" alt="Resort 1">
@@ -14,12 +14,18 @@
                 <img src="{{ asset('img/head1.png') }}" class="d-block w-100 carousel-image" alt="Resort 3">
             </div>
         </div>
+        <!-- Prev Button -->
         <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
+            <span class="carousel-control-prev-icon bg-dark bg-opacity-75 p-3 rounded-circle" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
         </button>
+
+        <!-- Next Button -->
         <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon"></span>
+            <span class="carousel-control-next-icon bg-dark bg-opacity-75 p-3 rounded-circle" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
         </button>
+
     </section>
     @livewire('location.home',['location_id' => $location_id])
     <!-- Benefits Section -->
