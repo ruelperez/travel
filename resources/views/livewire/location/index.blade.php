@@ -19,7 +19,7 @@
                             </div>
                         </div>
                         <div class="card-body d-flex flex-column">
-                            <h6 class="fw-bold text-primary">{{ $deal->resort_name }} All Inclusive</h6>
+                            <h6 class="fw-bold text-primary">{{ ucwords(strtolower($deal->resort_name)) }} All Inclusive</h6>
                             <p class="mb-1 small">5 Days & 4 nights for 2 adults.*</p>
                             <p class="text-muted small mb-3">*Ask about including children.</p>
                             <a href="#" class="mt-auto btn btn-sm fw-semibold text-black" style="background: linear-gradient(90deg, #00C9FF, #92FE9D);" onclick="location.href = '/{{$deal->location->location_name}}/{{$deal->resort_name}}/{{$deal->id}}';">EXPLORE THIS OFFER</a>

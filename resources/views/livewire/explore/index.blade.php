@@ -19,7 +19,7 @@
             <!-- Resort Info -->
             <div>
                 <div class="d-flex align-items-start gap-2 mb-1 flex-wrap">
-                    <h4 class="fw-bold mb-0">{{ ucwords(strtolower($deal->resort_name)) }}</h4>
+                    <h5 class="fw-bold mb-0">{{ ucwords(strtolower($deal->resort_name)) }}</h5>
                     <span class="text-nowrap">(All Inclusive)</span>
                 </div>
                 <p class="text-muted mb-0">

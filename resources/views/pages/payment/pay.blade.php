@@ -14,10 +14,10 @@
                             <div class="custom-form-box shadow-sm rounded">
                                 <!-- Logo only on desktop view -->
                                 <div class="mb-3 d-none d-md-block">
-                                    <img src="{{ asset('img/logo.png') }}" alt="Company Logo" style="height: 50px;">
+                                    <img src="{{ asset('img/logo.png') }}" alt="Company Logo" style="height: 40px;">
                                 </div>
 
-                                <h5 class="mb-1 fw-bold text-primary">Booking & Payment Details</h5>
+                                <h5 class="mb-1 fw-bold text-primary text-center mt-4">Booking & Payment Details</h5>
                                 <hr>
                                 <form method="POST" action="{{ route('paymongo.charge') }}">
                                     @csrf
@@ -71,15 +71,15 @@
                         </div>
                         <!-- Logo only on mobile view -->
                         <div class="mb-1 d-block d-md-none text-left">
-                            <img src="{{ asset('img/logo.png') }}" alt="Company Logo" style="height: 50px;">
+                            <img src="{{ asset('img/logo.png') }}" alt="Company Logo" style="height: 45px;">
                         </div>
                         <!-- Booking Summary -->
                         <div class="col-md-5 order-1 order-md-2">
                             <div class="custom-form-box shadow-sm rounded">
-                                <h5 class="fw-bold mb-3 text-primary">Booking Summary</h5>
+                                <h5 class="fw-bold mb-3 text-primary text-center">Booking Summary</h5>
                                 <hr>
                                 <ul class="list-unstyled mb-2">
-                                    <li><strong>Location:</strong> {{ $location_name ?? 'None' }} ({{ $resort_name ?? 'None' }})</li>
+                                    <li><strong>Location:</strong> {{ $location_name ?? 'None' }} ({{ ucwords(strtolower($resort_name)) ?? 'None' }})</li>
                                     <li><strong>Package:</strong> {{ $package ?? '5 Days & 4 Nights for 2 Adults' }}</li>
                                 </ul>
                                 <div class="border-top pt-3 mt-3">
