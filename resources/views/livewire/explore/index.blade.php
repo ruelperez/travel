@@ -94,89 +94,107 @@
         </div>
         <div class="container my-4" x-data="{ selected: 'location' }">
             <!-- Tabs -->
-            <div class="d-flex flex-row fs-6 text-center align-items-stretch flex-wrap">
-                <div
-                    class="tab-item cursor-pointer user-select-none px-2 px-md-4 py-2 border-end border-2 border-dark"
-                    :class="selected === 'location' ? 'tab-selected' : ''"
-                    @click="selected = 'location'"
-                >
-                    Package
-                </div>
-                <div
-                    class="tab-item cursor-pointer user-select-none px-2 px-md-4 py-2 border-end border-2 border-dark"
-                    :class="selected === 'package' ? 'tab-selected' : ''"
-                    @click="selected = 'package'"
-                >
-                    Map
-                </div>
-                <div
-                    class="tab-item cursor-pointer user-select-none px-2 px-md-4 py-2 border-end border-2 border-dark"
-                    :class="selected === 'room' ? 'tab-selected' : ''"
-                    @click="selected = 'room'"
-                >
-                    Room
-                </div>
-                <div
-                    class="tab-item cursor-pointer user-select-none px-2 px-md-4 py-2"
-                    :class="selected === 'amenities' ? 'tab-selected' : ''"
-                    @click="selected = 'amenities'"
-                >
-                    Amen.
-                </div>
-            </div>
-
-            <!-- Main Layout -->
-            <div class="row align-items-start mt-4">
-                <!-- Left Column: Dynamic Content -->
-                <div class="col-md-8 mb-4 mb-md-0">
-                    <!-- Package Section -->
-                    <div x-show="selected === 'location'" x-transition>
-                        <h3 style="color: #4B0082">{{ $deal->package }}.</h3>
-                        <p class="text-muted">{{ $deal->package_desc }}</p>
+            <!-- Full Tabs & Content Section -->
+            <div x-data="{ selected: 'views' }">
+                <!-- Tabs -->
+                <div class="overflow-auto" style="white-space: nowrap;">
+                    <div class="d-inline-flex fs-6 text-center align-items-stretch">
+                        <div
+                            class="tab-item cursor-pointer user-select-none px-2 px-md-4 py-2 border-end border-2 border-dark"
+                            :class="selected === 'views' ? 'tab-selected fw-bold' : ''"
+                            @click="selected = 'views'"
+                        >
+                            Views
+                        </div>
+                        <div
+                            class="tab-item cursor-pointer user-select-none px-2 px-md-4 py-2 border-end border-2 border-dark"
+                            :class="selected === 'location' ? 'tab-selected fw-bold' : ''"
+                            @click="selected = 'location'"
+                        >
+                            Package
+                        </div>
+                        <div
+                            class="tab-item cursor-pointer user-select-none px-2 px-md-4 py-2 border-end border-2 border-dark"
+                            :class="selected === 'package' ? 'tab-selected fw-bold' : ''"
+                            @click="selected = 'package'"
+                        >
+                            Map
+                        </div>
+                        <div
+                            class="tab-item cursor-pointer user-select-none px-2 px-md-4 py-2 border-end border-2 border-dark"
+                            :class="selected === 'room' ? 'tab-selected fw-bold' : ''"
+                            @click="selected = 'room'"
+                        >
+                            Room
+                        </div>
+                        <div
+                            class="tab-item cursor-pointer user-select-none px-2 px-md-4 py-2"
+                            :class="selected === 'amenities' ? 'tab-selected fw-bold' : ''"
+                            @click="selected = 'amenities'"
+                        >
+                            Amen.
+                        </div>
                     </div>
+                </div>
 
-                    <!-- Map Section -->
-                    <div x-show="selected === 'package'" x-transition>
-                        <div class="ratio ratio-16x9" style="min-height: 350px;">
-                            <iframe
-                                src="{{$deal->map}}"
-                                width="100%" height="300"
-                                style="border:0; width:100%; height:100%; min-height: 350px;" allowfullscreen="" loading="lazy"
-                                referrerpolicy="no-referrer-when-downgrade">
-                            </iframe>
+                <!-- Main Layout -->
+                <div class="row align-items-start mt-4">
+                    <!-- Left Column: Dynamic Content -->
+                    <div class="col-md-8 mb-4 mb-md-0">
+                        <!-- Views Section -->
+                        <div x-show="selected === 'views'" x-transition>
+                            <p class="text-muted">This section displays resort view photos or description.</p>
+                        </div>
+
+                        <!-- Package Section -->
+                        <div x-show="selected === 'location'" x-transition>
+                            <h3 style="color: #4B0082">{{ $deal->package }}.</h3>
+                            <p class="text-muted">{{ $deal->package_desc }}</p>
+                        </div>
+
+                        <!-- Map Section -->
+                        <div x-show="selected === 'package'" x-transition>
+                            <div class="ratio ratio-16x9" style="min-height: 350px;">
+                                <iframe
+                                    src="{{ $deal->map }}"
+                                    width="100%" height="300"
+                                    style="border:0; width:100%; height:100%; min-height: 350px;" allowfullscreen="" loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade">
+                                </iframe>
+                            </div>
+                        </div>
+
+                        <!-- Resort Room Section -->
+                        <div x-show="selected === 'room'" x-transition>
+                            <h4 class="mb-3">Resort Room</h4>
+                            <p class="text-muted">Details about the resort room go here.</p>
+                        </div>
+
+                        <!-- Amenities Section -->
+                        <div x-show="selected === 'amenities'" x-transition>
+                            <p class="text-muted">Details about the resort room go amenities.</p>
                         </div>
                     </div>
 
-                    <!-- Resort Room Section -->
-                    <div x-show="selected === 'room'" x-transition>
-                        <h4 class="mb-3">Resort Room</h4>
-                        <p class="text-muted">Details about the resort room go here.</p>
-                    </div>
-
-                    <!-- Resort Room Section -->
-                    <div x-show="selected === 'amenities'" x-transition>
-                        <p class="text-muted">Details about the resort room go amenities.</p>
-                    </div>
-                </div>
-
-                <!-- Right Column: Call Widget (Always visible) -->
-                <div class="col-md-4">
-                    <div class="card shadow border-0 text-center p-3">
-                        <img src="{{ asset('img/callnow.png') }}" class="rounded-circle mx-auto mb-3" width="100" height="100" alt="Expert">
-                        <h6 class="text-muted mb-0">Need Help?</h6>
-                        <h5 class="fw-bold mb-3">Talk to a Travel Expert</h5>
-                        <hr class="my-2">
-                        <div class="mb-2">
-                            <h6 class="fw-bold mb-0">Book Today</h6>
-                            <small class="text-muted">Pick your dates later</small>
+                    <!-- Right Column: Call Widget -->
+                    <div class="col-md-4">
+                        <div class="card shadow border-0 text-center p-3">
+                            <img src="{{ asset('img/callnow.png') }}" class="rounded-circle mx-auto mb-3" width="100" height="100" alt="Expert">
+                            <h6 class="text-muted mb-0">Need Help?</h6>
+                            <h5 class="fw-bold mb-3">Talk to a Travel Expert</h5>
+                            <hr class="my-2">
+                            <div class="mb-2">
+                                <h6 class="fw-bold mb-0">Book Today</h6>
+                                <small class="text-muted">Pick your dates later</small>
+                            </div>
+                            <p class="text-danger fw-bold fs-6 mb-3">
+                                <i class="bi bi-telephone-fill me-1"></i> 888 592-0021
+                            </p>
+                            <a href="tel:8776923883" class="btn text-white fw-semibold w-100"
+                               style="background: linear-gradient(to right, #444, #000); border-radius: 10px;">
+                                CALL NOW
+                            </a>
                         </div>
-                        <p class="text-danger fw-bold fs-6 mb-3">
-                            <i class="bi bi-telephone-fill me-1"></i> 888 592-0021
-                        </p>
-                        <a href="tel:8776923883" class="btn text-white fw-semibold w-100"
-                           style="background: linear-gradient(to right, #444, #000); border-radius: 10px;">
-                            CALL NOW
-                        </a>
                     </div>
                 </div>
             </div>
