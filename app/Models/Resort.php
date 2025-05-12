@@ -34,7 +34,7 @@ class Resort extends Model
     public function room(){
         return $this->hasMany(Room::class);
     }
-    
+
 
     use HasFactory;
 }
