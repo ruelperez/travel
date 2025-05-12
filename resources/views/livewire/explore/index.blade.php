@@ -49,7 +49,7 @@
 
 
             <!-- Button (centered on mobile only) -->
-            <div class="mt-2 mt-md-0 mx-auto mx-md-0 text-center text-md-start">
+            <div class="mt-3 mt-md-0 mx-auto mx-md-0 text-center text-md-start">
                 <a href="/pay/{{ $deal->location->location_name }}/{{ $deal->resort_name }}/{{ $deal->price }}/{{ $deal->package }}"
                    class="btn px-4 py-2 fw-semibold text-dark"
                    style="background: linear-gradient(135deg, #fff176, #fdd835); border: none;">
@@ -57,69 +57,35 @@
                 </a>
             </div>
         </div>
-
-        <!-- Desktop View: Grid (3 Columns) -->
-        <div class="row d-none d-md-flex justify-content-center">
-            @foreach($img_path as $path)
-                <div class="col-md-4 mb-4 d-flex justify-content-center">
-                    <div class="position-relative rounded overflow-hidden" style="width: 450px; height: 450px;">
-                        <img src="{{asset('img/resort/'.$path->image)}}" class="w-100 h-100 object-cover">
-{{--                        <div class="position-absolute top-0 start-0 bg-teal text-white p-2 fw-semibold rounded-end mt-2 ms-2">--}}
-{{--                            SAVE NOW <br><span class="fw-normal small">Travel Later</span>--}}
-{{--                        </div>--}}
-                    </div>
-                </div>
-            @endforeach
-        </div>
-
         <!-- Mobile View: Carousel -->
-        <div id="dealCarousel" class="carousel slide d-md-none mx-auto" style="max-width: 450px;" data-bs-ride="carousel">
-            <div class="carousel-inner rounded overflow-hidden" style="height: 450px;">
-                <div class="carousel-item active">
-                    <img src="{{asset('img/palmar1.png')}}" class="d-block w-100 h-100 object-cover" alt="Image 1">
-                </div>
-                <div class="carousel-item">
-                    <img src="{{asset('img/palmar2.png')}}" class="d-block w-100 h-100 object-cover" alt="Image 2">
-                </div>
-                <div class="carousel-item">
-                    <img src="{{asset('img/palmar3.png')}}" class="d-block w-100 h-100 object-cover" alt="Image 3">
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#dealCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon bg-dark rounded-circle p-2"></span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#dealCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon bg-dark rounded-circle p-2"></span>
-            </button>
-        </div>
-        <div class="container my-4" x-data="{ selected: 'location' }">
+
+
+        <div class="container my-4 py-3 px-1 px-sm-2 px-lg-3" x-data="{ selected: 'location' }" style="background-color: #F5F5F5">
             <!-- Tabs -->
             <!-- Full Tabs & Content Section -->
             <div x-data="{ selected: 'views' }">
                 <!-- Tabs -->
                 <div class="overflow-auto" style="white-space: nowrap;">
                     <div class="d-inline-flex fs-6 text-center align-items-stretch">
+                        <!-- View -->
                         <div
                             class="tab-item cursor-pointer user-select-none px-2 px-md-4 py-2 border-end border-2 border-dark"
                             :class="selected === 'views' ? 'tab-selected fw-bold' : ''"
                             @click="selected = 'views'"
                         >
-                            Views
+                            View
                         </div>
+
+                        <!-- Amen. -->
                         <div
                             class="tab-item cursor-pointer user-select-none px-2 px-md-4 py-2 border-end border-2 border-dark"
-                            :class="selected === 'location' ? 'tab-selected fw-bold' : ''"
-                            @click="selected = 'location'"
+                            :class="selected === 'amenities' ? 'tab-selected fw-bold' : ''"
+                            @click="selected = 'amenities'"
                         >
-                            Package
+                            Amen.
                         </div>
-                        <div
-                            class="tab-item cursor-pointer user-select-none px-2 px-md-4 py-2 border-end border-2 border-dark"
-                            :class="selected === 'package' ? 'tab-selected fw-bold' : ''"
-                            @click="selected = 'package'"
-                        >
-                            Map
-                        </div>
+
+                        <!-- Room -->
                         <div
                             class="tab-item cursor-pointer user-select-none px-2 px-md-4 py-2 border-end border-2 border-dark"
                             :class="selected === 'room' ? 'tab-selected fw-bold' : ''"
@@ -127,23 +93,59 @@
                         >
                             Room
                         </div>
+
+                        <!-- Map -->
+                        <div
+                            class="tab-item cursor-pointer user-select-none px-2 px-md-4 py-2 border-end border-2 border-dark"
+                            :class="selected === 'package' ? 'tab-selected fw-bold' : ''"
+                            @click="selected = 'package'"
+                        >
+                            Map
+                        </div>
+
+                        <!-- Package -->
                         <div
                             class="tab-item cursor-pointer user-select-none px-2 px-md-4 py-2"
-                            :class="selected === 'amenities' ? 'tab-selected fw-bold' : ''"
-                            @click="selected = 'amenities'"
+                            :class="selected === 'location' ? 'tab-selected fw-bold' : ''"
+                            @click="selected = 'location'"
                         >
-                            Amen.
+                            Package
                         </div>
                     </div>
                 </div>
+
 
                 <!-- Main Layout -->
                 <div class="row align-items-start mt-4">
                     <!-- Left Column: Dynamic Content -->
                     <div class="col-md-8 mb-4 mb-md-0">
-                        <!-- Views Section -->
-                        <div x-show="selected === 'views'" x-transition>
-                            <p class="text-muted">This section displays resort view photos or description.</p>
+                        <!-- Views Tab Content -->
+                        <div x-show="selected === 'views'" x-transition >
+                            <div id="dealCarousel" class="carousel slide mx-auto position-relative w-100" data-bs-ride="carousel">
+                                <div class="carousel-inner rounded overflow-hidden w-100 position-relative">
+                                    @foreach ($img_path as $index => $path)
+                                        <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
+                                            <img src="{{ asset('img/resort/' . $path->image) }}"
+                                                 class="d-block mx-auto img-fluid"
+                                                 style="width: 100%; height: auto;" alt="Image {{ $index + 1 }}">
+                                        </div>
+                                    @endforeach
+                                </div>
+
+                                <!-- Prev Button -->
+                                <button class="carousel-control-prev position-absolute top-50 start-0 translate-middle-y custom-carousel-control"
+                                        type="button" data-bs-target="#dealCarousel" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+
+                                <!-- Next Button -->
+                                <button class="carousel-control-next position-absolute top-50 end-0 translate-middle-y custom-carousel-control"
+                                        type="button" data-bs-target="#dealCarousel" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
                         </div>
 
                         <!-- Package Section -->

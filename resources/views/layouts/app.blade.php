@@ -20,6 +20,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
+        @media (min-width: 1200px) {
+            .responsive-carousel {
+                max-width: 100%;
+                height: 300px;
+            }
+        }
         .tab-scale {
             transition: all 0.2s ease;
         }
@@ -152,10 +158,14 @@
 
         @media (max-width: 768px) {
             #dealCarousel {
-                max-width: 90%;
+                height: 200px;
             }
             .carousel-inner {
-                height: 400px !important;
+                height: 100%;
+            }
+            .carousel-inner img {
+                height: 100%;
+                object-fit: cover;
             }
         }
         .overflow-auto::-webkit-scrollbar {
