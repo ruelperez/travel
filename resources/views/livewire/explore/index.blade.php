@@ -49,7 +49,7 @@
 
 
             <!-- Button (centered on mobile only) -->
-            <div class="mt-3 mt-md-0 mx-auto mx-md-0 text-center text-md-start">
+            <div class="mt-2 mt-md-0 mx-auto mx-md-0 text-center text-md-start">
                 <a href="/pay/{{ $deal->location->location_name }}/{{ $deal->resort_name }}/{{ $deal->price }}/{{ $deal->package }}"
                    class="btn px-4 py-2 fw-semibold text-dark"
                    style="background: linear-gradient(135deg, #fff176, #fdd835); border: none;">
