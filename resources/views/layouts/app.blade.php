@@ -21,10 +21,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
 
     <style>
-        .glightbox-container {
-            background: rgba(255, 255, 255, 0.15) !important;
-            backdrop-filter: blur(8px);
-        }
         @media (min-width: 1200px) {
             .responsive-carousel {
                 max-width: 100%;
@@ -166,10 +162,11 @@
                 height: 200px;
             }
             .carousel-inner {
-                height: 100%;
+                height: 380px;
+
             }
             .carousel-inner img {
-                height: 100%;
+                height: 380px;
                 object-fit: cover;
             }
         }
