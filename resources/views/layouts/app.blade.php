@@ -18,8 +18,13 @@
     <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <script src="//unpkg.com/alpinejs" defer></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
 
     <style>
+        .glightbox-container {
+            background: rgba(255, 255, 255, 0.15) !important;
+            backdrop-filter: blur(8px);
+        }
         @media (min-width: 1200px) {
             .responsive-carousel {
                 max-width: 100%;
@@ -256,6 +261,7 @@
         }
     });
 </script>
+<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
 @livewireScripts
 
 @stack('js')

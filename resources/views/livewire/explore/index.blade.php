@@ -125,12 +125,15 @@
                                 <div class="carousel-inner rounded overflow-hidden w-100 position-relative">
                                     @foreach ($img_path as $index => $path)
                                         <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
-                                            <img src="{{ asset('img/resort/' . $path->image) }}"
-                                                 class="d-block mx-auto img-fluid"
-                                                 style="width: 100%; height: auto;" alt="Image {{ $index + 1 }}">
+                                            <a href="{{ asset('img/resort/' . $path->image) }}" class="glightbox" data-gallery="resort-gallery">
+                                                <img src="{{ asset('img/resort/' . $path->image) }}"
+                                                     class="d-block mx-auto img-fluid"
+                                                     style="width: 100%; height: auto;" alt="Image {{ $index + 1 }}">
+                                            </a>
                                         </div>
                                     @endforeach
                                 </div>
+
 
                                 <!-- Prev Button -->
                                 <button class="carousel-control-prev position-absolute top-50 start-0 translate-middle-y custom-carousel-control"
@@ -203,6 +206,17 @@
         </div>
     </div>
 </div>
-
+@push('js')
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const lightbox = GLightbox({
+                selector: '.glightbox',
+                touchNavigation: true,
+                loop: true,
+                zoomable: true,
+            });
+        });
+    </script>
+@endpush
 
 
