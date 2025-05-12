@@ -8,7 +8,7 @@ use Livewire\Component;
 
 class Index extends Component
 {
-    public $deal, $img_path;
+    public $deal, $img_path, $img_amenity;
 
     public function render()
     {
@@ -18,5 +18,6 @@ class Index extends Component
     public function mount($detail){
         $this->deal = $detail;
         $this->img_path = Resort::find($this->deal->id)->resort_pic;
+        $this->img_amenity = Resort::find($this->deal->id)->amenity;
     }
 }

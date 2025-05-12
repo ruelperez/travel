@@ -175,10 +175,37 @@
                             <p class="text-muted">Details about the resort room go here.</p>
                         </div>
 
-                        <!-- Amenities Section -->
+                        <!-- Amenities Tab Content -->
                         <div x-show="selected === 'amenities'" x-transition>
-                            <p class="text-muted">Details about the resort room go amenities.</p>
+                            <div id="amenitiesCarousel" class="carousel slide mx-auto position-relative w-100" data-bs-ride="carousel" style="height: 200px;">
+                                <div class="carousel-inner rounded overflow-hidden w-100 position-relative">
+                                    @foreach ($img_amenity as $index => $path)
+                                        <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
+                                            <a href="{{ asset('img/amenities/' . $path->image) }}" class="glightbox" data-gallery="amenities-gallery">
+                                                <img src="{{ asset('img/amenities/' . $path->image) }}"
+                                                     class="d-block mx-auto img-fluid"
+                                                     style="width: 100%; height: auto;" alt="Amenity {{ $index + 1 }}">
+                                            </a>
+                                        </div>
+                                    @endforeach
+                                </div>
+
+                                <!-- Prev Button -->
+                                <button class="carousel-control-prev position-absolute top-50 start-0 translate-middle-y custom-carousel-control"
+                                        type="button" data-bs-target="#amenitiesCarousel" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+
+                                <!-- Next Button -->
+                                <button class="carousel-control-next position-absolute top-50 end-0 translate-middle-y custom-carousel-control"
+                                        type="button" data-bs-target="#amenitiesCarousel" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
                         </div>
+
                     </div>
 
                     <!-- Right Column: Call Widget -->
