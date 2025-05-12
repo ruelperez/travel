@@ -69,7 +69,7 @@
                     <div class="d-inline-flex fs-6 text-center align-items-stretch">
                         <!-- View -->
                         <div
-                            class="tab-item cursor-pointer user-select-none px-2 px-md-4 py-2 border-end border-2 border-dark"
+                            class="tab-item cursor-pointer user-select-none px-2 px-md-4 py-2 border-end border-1 border-dark"
                             :class="selected === 'views' ? 'tab-selected fw-bold' : ''"
                             @click="selected = 'views'"
                         >
@@ -78,7 +78,7 @@
 
                         <!-- Amen. -->
                         <div
-                            class="tab-item cursor-pointer user-select-none px-2 px-md-4 py-2 border-end border-2 border-dark"
+                            class="tab-item cursor-pointer user-select-none px-2 px-md-4 py-2 border-end border-1 border-dark"
                             :class="selected === 'amenities' ? 'tab-selected fw-bold' : ''"
                             @click="selected = 'amenities'"
                         >
@@ -87,7 +87,7 @@
 
                         <!-- Room -->
                         <div
-                            class="tab-item cursor-pointer user-select-none px-2 px-md-4 py-2 border-end border-2 border-dark"
+                            class="tab-item cursor-pointer user-select-none px-2 px-md-4 py-2 border-end border-1 border-dark"
                             :class="selected === 'room' ? 'tab-selected fw-bold' : ''"
                             @click="selected = 'room'"
                         >
@@ -96,7 +96,7 @@
 
                         <!-- Map -->
                         <div
-                            class="tab-item cursor-pointer user-select-none px-2 px-md-4 py-2 border-end border-2 border-dark"
+                            class="tab-item cursor-pointer user-select-none px-2 px-md-4 py-2 border-end border-1 border-dark"
                             :class="selected === 'package' ? 'tab-selected fw-bold' : ''"
                             @click="selected = 'package'"
                         >
