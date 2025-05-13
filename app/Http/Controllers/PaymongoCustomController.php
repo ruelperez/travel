@@ -17,13 +17,15 @@ class PaymongoCustomController extends Controller
             'name' => 'required|string',
             'email' => 'required|email',
             'phone' => 'required|string',
-            'amount' => 'required|numeric|min:20',
+            'amount' => 'required',
             'card_number' => 'required|string',
-            'exp_month' => 'required|numeric',
-            'exp_year' => 'required|numeric',
+            'exp_date' => 'required',
             'cvc' => 'required|string',
         ]);
+        [$expMonth, $expYear] = explode('/', $request->exp_date);
 
+// Convert 2-digit year to 4-digit
+        $expYear = strlen($expYear) === 2 ? '20' . $expYear : $expYear;
         $amount = $request->amount * 100;
 
         // Step 1: Create Payment Intent
@@ -33,9 +35,9 @@ class PaymongoCustomController extends Controller
                 'data' => [
                     'attributes' => [
                         'amount' => $amount,
-                        'payment_method_allowed' => ['cards'],
+                        'payment_method_allowed' => ['card'],
                         'payment_method_options' => [
-                            'cards' => ['request_three_d_secure' => 'any']
+                            'card' => ['request_three_d_secure' => 'any']
                         ],
                         'currency' => 'PHP',
                         'description' => 'Custom Card Payment',
@@ -61,11 +63,11 @@ class PaymongoCustomController extends Controller
             ->post('https://api.paymongo.com/v1/payment_methods', [
                 'data' => [
                     'attributes' => [
-                        'type' => 'cards',
+                        'type' => 'card',
                         'details' => [
-                            'card_number' => $request->card_number,
-                            'exp_month' => (int) $request->exp_month,
-                            'exp_year' => (int) $request->exp_year,
+                            'card_number' => preg_replace('/\s+/', '', $request->card_number),
+                            'exp_month' =>  (int) $expMonth,
+                            'exp_year' => (int) $expYear,
                             'cvc' => $request->cvc
                         ],
                         'billing' => [
