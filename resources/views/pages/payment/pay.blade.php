@@ -19,7 +19,7 @@
 
                                 <h5 class="mb-1 fw-bold text-primary text-center mt-4">Booking & Payment Details</h5>
                                 <hr>
-                                <form method="POST" action="{{ route('paymongo.charge') }}">
+                                <form method="POST" action="{{ route('xendit.charge') }}">
                                     @csrf
 
                                     <div class="mb-3">
@@ -39,7 +39,7 @@
                                     <!-- Billing Address Section -->
                                     <div class="mb-3">
                                         <label class="form-label">Billing Address</label>
-                                        <input type="text" name="phone" class="form-control" required>
+                                        <input type="text" name="address" class="form-control" required>
                                     </div>
                                     <div class="mt-4 border-top pt-3">
                                         <label class="form-label d-block mb-3">Card Details</label>
@@ -65,7 +65,7 @@
 
                                     <input type="hidden" name="amount" value="{{ $amount ?? 100 }}">
 
-                                    <button type="submit" class="btn btn-primary w-100 mt-3" disabled>Proceed</button>
+                                    <button type="submit" class="btn btn-primary w-100 mt-3">Proceed</button>
                                 </form>
                             </div>
                         </div>
