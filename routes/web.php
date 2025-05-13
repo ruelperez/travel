@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\PaymongoCustomController;
-use App\Http\Controllers\XenditCustomController;
 use App\Mail\PaymentReceiptMail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
@@ -53,6 +52,3 @@ Route::get('/test-mail', function () {
 
     return 'Test email sent!';
 });
-
-Route::post('/xendit-charge', [XenditCustomController::class, 'charge'])->name('xendit.charge');
-
