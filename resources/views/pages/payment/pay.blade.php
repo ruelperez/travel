@@ -65,7 +65,7 @@
 
                                     <input type="hidden" name="amount" value="{{ $amount ?? 100 }}">
 
-                                    <button type="submit" class="btn btn-primary w-100 mt-3" disabled>Proceed</button>
+                                    <button type="submit" class="btn btn-primary w-100 mt-3">Proceed</button>
                                 </form>
                             </div>
                         </div>
