@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\PaymongoCustomController;
+use App\Http\Controllers\XenditCustomController;
 use App\Mail\PaymentReceiptMail;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
@@ -33,8 +35,9 @@ Route::get('/pay/{location_name}/{resort_name}/{price}/{package}', function ($lo
     ]);
 })->name('pay.form');
 
-Route::post('/pay_process', [PaymongoCustomController::class, 'charge'])->name('paymongo.charge');
 
+//PAYMENT PROCESS
+Route::post('/xendit-charge', [XenditCustomController::class, 'charge'])->name('xendit.charge');
 Route::get('/payment-success', function () {
     return view('pages.payment.success');
 })->name('payment.success');
@@ -42,13 +45,5 @@ Route::get('/payment-success', function () {
 Route::get('/payment-failed', function () {
     return view('pages.payment.failed');
 })->name('payment.failed');
-Route::get('/test-mail', function () {
-    Mail::to('karuelflorperezz@gmail.com')->send(new PaymentReceiptMail([
-        'name' => 'Test User',
-        'email' => 'karuelflorperezz@gmail.com',
-        'amount' => 1800,
-        'payment_id' => 'pi_test_12345'
-    ]));
 
-    return 'Test email sent!';
-});
+

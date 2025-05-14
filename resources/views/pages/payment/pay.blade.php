@@ -19,7 +19,7 @@
 
                                 <h5 class="mb-1 fw-bold text-primary text-center mt-4">Booking & Payment Details</h5>
                                 <hr>
-                                <form method="POST" action="{{ route('paymongo.charge') }}">
+                                <form method="POST" action="{{ route('xendit.charge') }}">
                                     @csrf
 
                                     <div class="mb-3">
@@ -36,36 +36,29 @@
                                         <label class="form-label">Phone Number</label>
                                         <input type="text" name="phone" class="form-control" required>
                                     </div>
-                                    <!-- Billing Address Section -->
+
+                                    <hr>
+
                                     <div class="mb-3">
-                                        <label class="form-label">Billing Address</label>
-                                        <input type="text" name="phone" class="form-control" required>
-                                    </div>
-                                    <div class="mt-4 border-top pt-3">
-                                        <label class="form-label d-block mb-3">Card Details</label>
-
-                                        <!-- Card Number -->
-                                        <div class="position-relative mb-3">
-                                            <input type="text" name="card_number" id="card_number" class="form-control pe-5" required>
-                                            <img id="card_icon" src="" alt="Card" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); height: 24px; display: none;">
-                                        </div>
-
-                                        <!-- Expiration -->
-                                        <div class="row mb-3">
-                                            <div class="col-6">
-                                                <input type="text" name="exp_date" id="exp_date" class="form-control" placeholder="MM/YY" maxlength="5" required>
-                                            </div>
-                                            <div class="col-6">
-                                                <input type="text" name="cvc" class="form-control" placeholder="CVC" maxlength="4" required>
-                                            </div>
-                                        </div>
+                                        <label class="form-label">Card Number</label>
+                                        <input type="text" name="card_number" id="card_number" class="form-control pe-5" required>
+                                        <img id="card_icon" src="" alt="Card" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); height: 24px; display: none;">
                                     </div>
 
-
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Expiration Date</label>
+                                            <input type="text" name="exp_date" id="exp_date" class="form-control" placeholder="MM/YY" maxlength="5" required>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">CVC</label>
+                                            <input type="text" name="cvc" class="form-control" placeholder="123" maxlength="4" required>
+                                        </div>
+                                    </div>
 
                                     <input type="hidden" name="amount" value="{{ $amount ?? 100 }}">
 
-                                    <button type="submit" class="btn btn-primary w-100 mt-3">Proceed</button>
+                                    <button type="submit" class="btn btn-primary w-100 mt-3">Pay Now</button>
                                 </form>
                             </div>
                         </div>
