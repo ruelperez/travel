@@ -56,3 +56,5 @@ Route::get('/test-mail', function () {
 
 Route::post('/xendit-charge', [XenditCustomController::class, 'charge'])->name('xendit.charge');
 
+Route::get('/checkout/success', [XenditCustomController::class, 'success'])->name('checkout.success');
+Route::get('/checkout/failed', [XenditCustomController::class, 'failed'])->name('checkout.failed');
