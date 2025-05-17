@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PaymongoCustomController;
+use App\Http\Controllers\PayPalController;
 use App\Mail\PaymentReceiptMail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
@@ -10,7 +11,7 @@ Route::get('/', function () {
     return view('pages.location.index', [
         'location_id' => 1
     ]);
-});
+})->name('home');
 
 Route::get('/resort/{location_id}', function ($location_id) {
     return view('pages.location.index', [
@@ -52,3 +53,8 @@ Route::get('/test-mail', function () {
 
     return 'Test email sent!';
 });
+
+
+Route::post('/paypal/create-order', [PayPalController::class, 'createOrder'])->name('paypal.create');
+Route::get('/paypal/success', [PayPalController::class, 'success'])->name('paypal.success');
+Route::get('/paypal/cancel', [PayPalController::class, 'cancel'])->name('paypal.cancel');

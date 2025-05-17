@@ -178,6 +178,7 @@
             display: none;
         }
     </style>
+    @stack('css')
     @livewireStyles
 </head>
 <body id="appBody" class="text-dark">

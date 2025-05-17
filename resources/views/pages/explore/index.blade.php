@@ -49,3 +49,59 @@
         });
     </script>
 @endpush
+@push('css')
+    <style>
+        body {
+            background: linear-gradient(to bottom, #ffffff, #f9f9ff);
+        }
+
+        .carousel-inner img {
+            transition: transform 0.3s ease;
+        }
+
+        .carousel-inner img:hover {
+            transform: scale(1.05);
+        }
+
+        .btn-glow {
+            animation: pulseGlow 1.5s infinite;
+            transition: transform 0.2s ease;
+        }
+
+        .btn-glow:hover {
+            transform: scale(1.05);
+        }
+
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 0px rgba(255, 255, 0, 0.6); }
+            50% { box-shadow: 0 0 20px rgba(255, 193, 7, 0.8); }
+            100% { box-shadow: 0 0 0px rgba(255, 255, 0, 0.6); }
+        }
+
+        .animated-section {
+            animation: fadeSlideUp 0.8s ease-in-out;
+        }
+
+        @keyframes fadeSlideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tab-item {
+            transition: background 0.3s ease;
+        }
+
+        .tab-item:hover {
+            background-color: #f0f0f0;
+        }
+
+        .call-card {
+            animation: popIn 0.9s ease-out;
+        }
+
+        @keyframes popIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+@endpush
