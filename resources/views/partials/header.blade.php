@@ -3,7 +3,7 @@
     <div class="container">
         <!-- Left: Logo and Title -->
         <a class="navbar-brand d-flex align-items-center gap-2" href="/">
-            <img src="{{ asset('img/logo.png') }}" alt="Global Exchange Vacation Club" height="50">
+            <img src="{{ asset('img/logo.png') }}" alt="Global Exchange Vacation Club" height="50" class="p-0">
         </a>
 
         <!-- Toggler -->
