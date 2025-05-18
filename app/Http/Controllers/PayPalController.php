@@ -12,11 +12,6 @@ class PayPalController extends Controller
 {
     public function createOrder(Request $request)
     {
-        // Send email
-       Mail::to('karuelflorperezz@gmail.com')->send(new \App\Mail\PurchaseConfirmationMail([
-           'name' => 'Test User',
-           'email' => 'karuelflorperezz@gmail.com',
-       ]));
         // Save form data to session
         session([
             'resort_name' => $request->resort_name,
@@ -88,22 +83,22 @@ class PayPalController extends Controller
         $cardNumber = $cardInfo['last_digits'] ?? '************0000';
         $phone = $details['payer']['phone']['phone_number']['national_number'] ?? 'Not provided';
 
-        PurchaseConfirmation::create([
-            'name' => $details['payer']['name']['given_name'] . ' ' . $details['payer']['name']['surname'] ?? null,
-            'email' => $details['payer']['email_address'] ?? null,
-            'phone' => $phone,
-            'resort_name' => $resortName,
-            'package' => $package,
-            'transaction_id' => $details['purchase_units'][0]['payments']['captures'][0]['id'] ?? null,
-            'status' => $details['purchase_units'][0]['payments']['captures'][0]['status'] ?? null,
-            'amount' => $details['purchase_units'][0]['payments']['captures'][0]['amount']['value'] ?? null,
-            'us_time' => $usTime,
-            'purchased_date' => $usTime,
-            'certificate_expire' => $certificateExpire,
-            'invoice_number' => $invoiceNumber,
-            'card_type' => $cardType,
-            'card_number' => '************' . $cardNumber,
-        ]);
+//        PurchaseConfirmation::create([
+//            'name' => $details['payer']['name']['given_name'] . ' ' . $details['payer']['name']['surname'] ?? null,
+//            'email' => $details['payer']['email_address'] ?? null,
+//            'phone' => $phone,
+//            'resort_name' => $resortName,
+//            'package' => $package,
+//            'transaction_id' => $details['purchase_units'][0]['payments']['captures'][0]['id'] ?? null,
+//            'status' => $details['purchase_units'][0]['payments']['captures'][0]['status'] ?? null,
+//            'amount' => $details['purchase_units'][0]['payments']['captures'][0]['amount']['value'] ?? null,
+//            'us_time' => $usTime,
+//            'purchased_date' => $usTime,
+//            'certificate_expire' => $certificateExpire,
+//            'invoice_number' => $invoiceNumber,
+//            'card_type' => $cardType,
+//            'card_number' => '************' . $cardNumber,
+//        ]);
 
         $payers_email = $details['payer']['email_address'] ?? null;
         // Send email
