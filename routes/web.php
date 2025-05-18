@@ -58,3 +58,5 @@ Route::get('/test-mail', function () {
 Route::post('/paypal/create-order', [PayPalController::class, 'createOrder'])->name('paypal.create');
 Route::get('/paypal/success', [PayPalController::class, 'success'])->name('paypal.success');
 Route::get('/paypal/cancel', [PayPalController::class, 'cancel'])->name('paypal.cancel');
+Route::get('/purchase-confirmation/{link_id}', [\App\Http\Controllers\PurchaseLinkController::class, 'index'])->name('purchase.link');
+Route::post('/purchase/sign', [\App\Http\Controllers\PurchaseLinkController::class, 'storeSignature'])->name('purchase.sign');

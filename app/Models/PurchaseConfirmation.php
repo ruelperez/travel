@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class PurchaseConfirmation extends Model
-{protected $fillable = [
+{
+    protected $fillable = [
         'name',
         'email',
         'phone',
@@ -22,6 +23,7 @@ class PurchaseConfirmation extends Model
         'card_type',
         'card_number',
         'sign_path',
+        'link_id',
     ];
 
     use HasFactory;

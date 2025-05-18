@@ -7,6 +7,7 @@ use App\Models\PurchaseConfirmation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class PayPalController extends Controller
 {
@@ -82,30 +83,37 @@ class PayPalController extends Controller
         $cardType = $cardInfo['brand'] ?? 'PayPal';
         $cardNumber = $cardInfo['last_digits'] ?? '************0000';
         $phone = $details['payer']['phone']['phone_number']['national_number'] ?? 'Not provided';
+// Generate a unique, readable string (e.g. TG-ABC123XYZ)
+        do {
+            $linkId = 'GE-' . strtoupper(Str::random(30));
+        } while (PurchaseConfirmation::where('link_id', $linkId)->exists());
 
-//        PurchaseConfirmation::create([
-//            'name' => $details['payer']['name']['given_name'] . ' ' . $details['payer']['name']['surname'] ?? null,
-//            'email' => $details['payer']['email_address'] ?? null,
-//            'phone' => $phone,
-//            'resort_name' => $resortName,
-//            'package' => $package,
-//            'transaction_id' => $details['purchase_units'][0]['payments']['captures'][0]['id'] ?? null,
-//            'status' => $details['purchase_units'][0]['payments']['captures'][0]['status'] ?? null,
-//            'amount' => $details['purchase_units'][0]['payments']['captures'][0]['amount']['value'] ?? null,
-//            'us_time' => $usTime,
-//            'purchased_date' => $usTime,
-//            'certificate_expire' => $certificateExpire,
-//            'invoice_number' => $invoiceNumber,
-//            'card_type' => $cardType,
-//            'card_number' => '************' . $cardNumber,
-//        ]);
+        PurchaseConfirmation::create([
+            'name' => $details['payer']['name']['given_name'] . ' ' . $details['payer']['name']['surname'] ?? null,
+            'email' => $details['payer']['email_address'] ?? null,
+            'phone' => $phone,
+            'resort_name' => $resortName,
+            'package' => $package,
+            'transaction_id' => $details['purchase_units'][0]['payments']['captures'][0]['id'] ?? null,
+            'status' => $details['purchase_units'][0]['payments']['captures'][0]['status'] ?? null,
+            'amount' => $details['purchase_units'][0]['payments']['captures'][0]['amount']['value'] ?? null,
+            'us_time' => $usTime,
+            'purchased_date' => $usTime,
+            'certificate_expire' => $certificateExpire,
+            'invoice_number' => $invoiceNumber,
+            'card_type' => $cardType,
+            'card_number' => '************' . $cardNumber,
+            'link_id' => $linkId,
+        ]);
 
         $payers_email = $details['payer']['email_address'] ?? null;
         // Send email
         Mail::to($payers_email)->send(new PurchaseConfirmationMail($details));
 
+
         return view('paypal.success', [
-            'details' => $details ?? null
+            'details' => $details ?? null,
+            'link_id' => $linkId // ✅ make it available to Blade
         ]);
     }
 
