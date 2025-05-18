@@ -47,13 +47,15 @@
                             <!-- Amount & Reference -->
                             <div class="border-top pt-3 mt-3 text-end">
                                 <h6 class="text-muted mb-1">Total Amount</h6>
-                                <p class="fs-3 text-success mb-0 fw-bold">${{ $price ?? '0.0' }}</p>
+{{--                                <p class="fs-3 text-success mb-0 fw-bold">${{ $price ?? '0.0' }}</p>--}}
+                                <p class="fs-3 text-success mb-0 fw-bold">$5</p>
                             </div>
                             <!-- Hidden Fields -->
                             <input type="hidden" name="location_name" value="{{ $location_name }}">
                             <input type="hidden" name="resort_name" value="{{ $resort_name }}">
                             <input type="hidden" name="package" value="{{ $package }}">
-                            <input type="hidden" name="amount" value="{{ $price }}">
+{{--                            <input type="hidden" name="amount" value="{{ $price }}">--}}
+                            <input type="hidden" name="amount" value="5">
                             <!-- Submit Button -->
                             <div class="mt-4">
                                 <button type="submit" class="btn btn-primary w-100 py-2 fs-6 shadow-sm">
