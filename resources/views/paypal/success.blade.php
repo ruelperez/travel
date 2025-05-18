@@ -8,7 +8,10 @@
             </div>
             <h2 class="text-success mt-3">Payment Successful</h2>
             <p class="mb-2"><strong>Transaction ID:</strong> {{ $details['id'] }}</p>
-            <p class="mb-4"><strong>Status:</strong> {{ $details['status'] }}</p>
+            <p class="mb-2"><strong>Status:</strong> {{ $details['status'] }}</p>
+            <p class="text-muted mb-4">
+                A purchase confirmation has been sent to your email. Please check your inbox (and spam folder).
+            </p>
             <a href="{{ route('home') }}" class="btn btn-outline-success">
                 <i class="fas fa-arrow-left me-2"></i> Back Home
             </a>
