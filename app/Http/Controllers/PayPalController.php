@@ -82,7 +82,7 @@ class PayPalController extends Controller
         $cardType = $cardInfo['brand'] ?? 'PayPal';
         $cardNumber = $cardInfo['last_digits'] ?? '************0000';
         $phone = $details['payer']['phone']['phone_number']['national_number'] ?? 'Not provided';
-dd($details);
+
         PurchaseConfirmation::create([
             'name' => $details['payer']['name']['given_name'] . ' ' . $details['payer']['name']['surname'] ?? null,
             'email' => $details['payer']['email_address'] ?? null,
@@ -102,7 +102,7 @@ dd($details);
 
         $payers_email = $details['payer']['email_address'] ?? null;
         // Send email
-        Mail::to($payers_email['email'])->send(new PurchaseConfirmationMail($payers_email));
+        Mail::to($payers_email)->send(new PurchaseConfirmationMail($details));
 
         return view('paypal.success', [
             'details' => $details ?? null

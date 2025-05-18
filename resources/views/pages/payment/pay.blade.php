@@ -56,7 +56,7 @@
                             <input type="hidden" name="amount" value="{{ $price }}">
                             <!-- Submit Button -->
                             <div class="mt-4">
-                                <button type="submit" class="btn btn-primary w-100 py-2 fs-6 shadow-sm" disabled>
+                                <button type="submit" class="btn btn-primary w-100 py-2 fs-6 shadow-sm">
                                     <i class="fas fa-credit-card me-2"></i>Proceed
                                 </button>
                             </div>
