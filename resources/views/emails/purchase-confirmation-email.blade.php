@@ -14,14 +14,14 @@
 
             <p class="fw-bold text-uppercase mt-4">This confirmation must be e-signed within 48 hours of purchase.</p>
 
-            <p><strong>IMPORTANT:</strong> ONLY if your purchase includes specific dates – If your arrival date is within 3 months Verifications Department will contact you within 72 hours to collect Resort Fees and confirm your hotel reservation. If your arrival date is more than 4 months away, we will contact you closer to your arrival to confirm your qualifications and collect Resort Fees. For concerns, call 877-867-0114 (M-F 9-9, Sa-Su 9-2 CT).</p>
+            <p><strong>IMPORTANT:</strong> ONLY if your purchase includes specific dates – If your arrival date is within 3 months Verifications Department will contact you within 72 hours to collect Resort Fees and confirm your hotel reservation. If your arrival date is more than 4 months away, we will contact you closer to your arrival to confirm your qualifications and collect Resort Fees. For concerns, call 888-592-0021 (M-F 9-9, Sa-Su 9-2 CT).</p>
 
-            <p><strong>IMPORTANT:</strong> OPEN DATED PACKAGES – To reserve your dates please call 855-690-2950 (M-F 9-8, Sa 9-5, Su 9-3 CT). This promotion may not be used during Christmas and New Year's weeks unless an additional premium is paid.</p>
+            <p><strong>IMPORTANT:</strong> OPEN DATED PACKAGES – To reserve your dates please call 888-592-0021 (M-F 9-8, Sa 9-5, Su 9-3 CT). This promotion may not be used during Christmas and New Year's weeks unless an additional premium is paid.</p>
 
             <div class="bg-warning px-3 py-2 rounded fw-semibold mt-4" style="display: inline-block; font-size: 14px;">
                 FREE INCENTIVES
             </div>
-            <p class="mt-2">If you book dates within 6 months of purchase, you’re eligible for incentives and rewards (subject to availability and not applicable to Cancun or group travel). Call 855-690-2950 for details.</p>
+            <p class="mt-2">If you book dates within 6 months of purchase, you’re eligible for incentives and rewards (subject to availability and not applicable to Cancun or group travel). Call 888-592-0021 for details.</p>
 
             <hr>
             <h5 class="fw-bold text-center">Payment Confirmation</h5>
@@ -73,14 +73,22 @@
             <p><strong>Note:</strong> Certificate covers 2 adults and 2 kids under 12. Additional costs apply for extras.</p>
 
             <h5 class="fw-bold mt-4">Terms and Conditions</h5>
-            <ul>
-                <li>Mandatory 90-minute presentation in Mexico.</li>
-                <li>This offer is for promotional use only and cannot be used if traveling with others using promotions.</li>
-                <li>Villa Group members cannot use this offer.</li>
-            </ul>
+            <p>This is a one-time promotional offer. Everyone included in the Mexico reservation must attend a 90-minute breakfast and presentation.
+                You cannot use this package at the same location and around the same time as family or friends who are also traveling on a promotional deal.
+                If your family or friends are scheduled to attend the same presentation during overlapping dates, your package will no longer be valid unless you pay a higher nightly rate to keep the reservation.
+                This rule does not apply if you're traveling with Universal Vacation Club members using their membership.
+                Villa Group members are not eligible to use this package.</p>
 
             <h5 class="fw-bold">Cancellation Policy</h5>
-            <p>Cancel within 24 hours at no cost via 877-849-0140 or email ejbello@vacationdealsallinclusive.com. After 24 hours, $149 cancellation fee applies. No refunds beyond expiration date.</p>
+            <p>You have 24 hours to cancel without any penalty by calling 888-592-0021 or emailing bookings@greenescapestravel.com
+                If you’re unable to use the certificate, it can be transferred to another qualified person.
+                Cancellations made after the 24-hour window will incur a $149 cancellation fee.
+                Please note, once the original expiration date has passed, the package becomes non-refundable.
+            </p>
+
+            <h5 class="fw-bold"> Re-Scheduling Policy</h5>
+            <p>Any changes made to your reservation after the initial booking may incur a processing fee and are dependent on hotel room availability. Please note that Resort Fees and White Glove Service charges are non-refundable. These fees must be discussed directly with the Reservations department.
+            </p>
 
             <h5 class="fw-bold">No Show / Unused Nights</h5>
             <p>No refunds for no-shows, early checkouts, or unused nights.</p>
