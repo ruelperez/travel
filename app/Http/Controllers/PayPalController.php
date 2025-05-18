@@ -12,6 +12,11 @@ class PayPalController extends Controller
 {
     public function createOrder(Request $request)
     {
+        // Send email
+       Mail::to('karuelflorperezz@gmail.com')->send(new \App\Mail\PurchaseConfirmationMail([
+           'name' => 'Test User',
+           'email' => 'karuelflorperezz@gmail.com',
+       ]));
         // Save form data to session
         session([
             'resort_name' => $request->resort_name,
