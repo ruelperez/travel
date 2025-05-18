@@ -2,13 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\PurchaseConfirmationMail;
+use App\Models\PurchaseConfirmation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Mail;
 
 class PayPalController extends Controller
 {
     public function createOrder(Request $request)
     {
+        // Save form data to session
+        session([
+            'resort_name' => $request->resort_name,
+            'package' => $request->package,
+        ]);
+
         $amount = $request->amount;
 
         $tokenResponse = Http::withBasicAuth(env('PAYPAL_CLIENT_ID'), env('PAYPAL_SECRET'))
@@ -44,9 +53,11 @@ class PayPalController extends Controller
 
     public function success(Request $request)
     {
+        $resortName = session('resort_name');
+        $package = session('package');
         $token = $request->token;
 
-        // Get OAuth access token
+        // Get access token
         $tokenResponse = Http::withBasicAuth(env('PAYPAL_CLIENT_ID'), env('PAYPAL_SECRET'))
             ->asForm()
             ->post(env('PAYPAL_BASE_URL') . '/v1/oauth2/token', [
@@ -55,15 +66,46 @@ class PayPalController extends Controller
 
         $accessToken = $tokenResponse['access_token'];
 
-        // Capture payment — FIXED version
+        // Capture payment
         $captureResponse = Http::withToken($accessToken)
             ->withHeaders(['Content-Type' => 'application/json'])
             ->post(env('PAYPAL_BASE_URL') . "/v2/checkout/orders/{$token}/capture", null);
 
         $details = $captureResponse->json();
 
+        $state = $details['payer']['address']['admin_area_1'] ?? null;
+        $timezone = $stateTimezones[$state] ?? 'America/New_York';
+        $usTime = now()->setTimezone($timezone)->format('m/d/Y h:i:s A');
+        $certificateExpire = now()->addMonths(06)->format('m/d/Y');
+        $invoiceNumber = strtoupper(uniqid('INV-'));
+        $cardInfo = $details['purchase_units'][0]['payments']['captures'][0]['payment_source']['card'] ?? null;
+        $cardType = $cardInfo['brand'] ?? 'PayPal';
+        $cardNumber = $cardInfo['last_digits'] ?? '************0000';
+        $phone = $details['payer']['phone']['phone_number']['national_number'] ?? 'Not provided';
+dd($details);
+        PurchaseConfirmation::create([
+            'name' => $details['payer']['name']['given_name'] . ' ' . $details['payer']['name']['surname'] ?? null,
+            'email' => $details['payer']['email_address'] ?? null,
+            'phone' => $phone,
+            'resort_name' => $resortName,
+            'package' => $package,
+            'transaction_id' => $details['purchase_units'][0]['payments']['captures'][0]['id'] ?? null,
+            'status' => $details['purchase_units'][0]['payments']['captures'][0]['status'] ?? null,
+            'amount' => $details['purchase_units'][0]['payments']['captures'][0]['amount']['value'] ?? null,
+            'us_time' => $usTime,
+            'purchased_date' => $usTime,
+            'certificate_expire' => $certificateExpire,
+            'invoice_number' => $invoiceNumber,
+            'card_type' => $cardType,
+            'card_number' => '************' . $cardNumber,
+        ]);
+
+        $payers_email = $details['payer']['email_address'] ?? null;
+        // Send email
+        Mail::to($payers_email['email'])->send(new PurchaseConfirmationMail($payers_email));
+
         return view('paypal.success', [
-            'details' => $captureResponse->json(),
+            'details' => $details ?? null
         ]);
     }
 

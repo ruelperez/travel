@@ -49,21 +49,14 @@
                                 <h6 class="text-muted mb-1">Total Amount</h6>
                                 <p class="fs-3 text-success mb-0 fw-bold">${{ $price ?? '0.0' }}</p>
                             </div>
-
-                            <div class="mt-2 small text-muted text-end">
-                                Transaction ID: <strong>{{ $reference ?? 'ABC123XYZ' }}</strong>
-                            </div>
-
                             <!-- Hidden Fields -->
                             <input type="hidden" name="location_name" value="{{ $location_name }}">
                             <input type="hidden" name="resort_name" value="{{ $resort_name }}">
                             <input type="hidden" name="package" value="{{ $package }}">
                             <input type="hidden" name="amount" value="{{ $price }}">
-                            <input type="hidden" name="reference" value="{{ $reference }}">
-
                             <!-- Submit Button -->
                             <div class="mt-4">
-                                <button type="submit" class="btn btn-primary w-100 py-2 fs-6 shadow-sm">
+                                <button type="submit" class="btn btn-primary w-100 py-2 fs-6 shadow-sm" disabled>
                                     <i class="fas fa-credit-card me-2"></i>Proceed
                                 </button>
                             </div>
