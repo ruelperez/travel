@@ -85,8 +85,15 @@ class PayPalController extends Controller
         $phone = $details['payer']['phone']['phone_number']['national_number'] ?? 'Not provided';
 // Generate a unique, readable string (e.g. TG-ABC123XYZ)
         do {
-            $linkId = 'GE-' . strtoupper(Str::random(30));
-        } while (PurchaseConfirmation::where('link_id', $linkId)->exists());
+            $linkId = 'GE-' . strtoupper(Str::random(40));
+        } while (PurchaseConfirmation::where('linkID', $linkId)->exists());
+
+        $count = PurchaseConfirmation::count() + 1;
+        $prefix = 'GE';
+        $number = str_pad($count, 5, '0', STR_PAD_LEFT);
+        $firstLetter = chr(ord('A') + (($count - 1) / 26) % 26);
+        $secondLetter = chr(ord('A') + ($count - 1) % 26);
+        $certNumber = "{$prefix}-{$number}-{$firstLetter}{$secondLetter}";
 
         PurchaseConfirmation::create([
             'name' => $details['payer']['name']['given_name'] . ' ' . $details['payer']['name']['surname'] ?? null,
@@ -103,17 +110,18 @@ class PayPalController extends Controller
             'invoice_number' => $invoiceNumber,
             'card_type' => $cardType,
             'card_number' => '************' . $cardNumber,
-            'link_id' => $linkId,
+            'linkID' => $linkId,
+            'cert_number' => $certNumber,
         ]);
-
+        $payLink = url('/purchase-confirmation/' . $linkId);
         $payers_email = $details['payer']['email_address'] ?? null;
         // Send email
-        Mail::to($payers_email)->send(new PurchaseConfirmationMail($details));
+        Mail::to($payers_email)->send(new PurchaseConfirmationMail($payLink));
 
 
         return view('paypal.success', [
             'details' => $details ?? null,
-            'link_id' => $linkId // ✅ make it available to Blade
+            'linkID' => $linkId // ✅ make it available to Blade
         ]);
     }
 

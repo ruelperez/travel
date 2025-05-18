@@ -2,24 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\PurchaseConfirmationMail;
+use App\Mail\ReservationMail;
 use App\Models\PurchaseConfirmation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class PurchaseLinkController extends Controller
 {
-    public function index($link_id)
+    public function index($linkID)
     {
-        $confirmation = PurchaseConfirmation::where('link_id', $link_id)->firstOrFail();
+        $confirmation = PurchaseConfirmation::where('linkID', $linkID)->firstOrFail();
         return view('purchase.confirmation', compact('confirmation'));
     }
     public function storeSignature(Request $request)
     {
         $request->validate([
-            'link_id' => 'required|string',
+            'linkID' => 'required|string',
             'signature_data' => 'required|string',
         ]);
 
-        $confirmation = \App\Models\PurchaseConfirmation::where('link_id', $request->link_id)->firstOrFail();
+        $confirmation = \App\Models\PurchaseConfirmation::where('linkID', $request->linkID)->firstOrFail();
 
         $imageData = $request->signature_data;
         $image = str_replace('data:image/png;base64,', '', $imageData);
@@ -31,7 +34,10 @@ class PurchaseLinkController extends Controller
         $confirmation->sign_path = 'img/signature/' . $imageName;
         $confirmation->save();
 
-        return redirect()->back()->with('success', 'Your signature has been saved successfully.');
+        $confirmation = PurchaseConfirmation::find($request->dataID);
+        Mail::to($confirmation->email)->send(new ReservationMail($confirmation));
+
+        return redirect()->back()->with('signed', true);
     }
 
 }

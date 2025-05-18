@@ -23,7 +23,8 @@ class PurchaseConfirmation extends Model
         'card_type',
         'card_number',
         'sign_path',
-        'link_id',
+        'linkID',
+        'cert_number'
     ];
 
     use HasFactory;

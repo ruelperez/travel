@@ -14,7 +14,7 @@
             </div>
 
             <p class="text-muted mt-3">
-                <a href="{{ route('purchase.link', $link_id) }}"
+                <a href="{{ route('purchase.link', $linkID) }}"
                    class="confirm-link"
                    target="_blank" rel="noopener noreferrer">
                     View your confirmation

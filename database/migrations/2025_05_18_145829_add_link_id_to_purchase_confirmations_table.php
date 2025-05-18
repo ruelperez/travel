@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('purchase_confirmations', function (Blueprint $table) {
-            $table->string('link_id')->unique()->after('id');
+            $table->text('linkID')->nullable()->unique()->after('id');
         });
     }
 

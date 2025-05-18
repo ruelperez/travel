@@ -12,19 +12,19 @@ use Illuminate\Queue\SerializesModels;
 class PurchaseConfirmationMail extends Mailable
 {
     use Queueable, SerializesModels;
-    public $data; // Store purchase info
+    public $payLink; // Store purchase info
     /**
      * Create a new message instance.
      */
-    public function __construct($data)
+    public function __construct($payLink)
     {
-        $this->data = $data;
+        $this->payLink = $payLink;
     }
 
     public function build()
     {
-        return $this->subject('Purchase Confirmation')
-            ->view('emails.purchase-confirmation');
+        return $this->view('emails.purchase-confirmation')
+            ->with(['payLink' => $this->payLink]);
     }
     public function attachments(): array
     {
