@@ -23,7 +23,8 @@ class PurchaseConfirmationMail extends Mailable
 
     public function build()
     {
-        return $this->view('emails.purchase-confirmation')
+        return $this->subject('Purchase Confirmation') // 👈 customized subject
+            ->view('emails.purchase-confirmation')
             ->with(['payLink' => $this->payLink]);
     }
     public function attachments(): array
