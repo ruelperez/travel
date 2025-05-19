@@ -35,4 +35,8 @@ return [
         ],
     ],
 
+    'paypal' => [
+        'webhook_id' => env('PAYPAL_WEBHOOK_ID'),
+    ],
+
 ];
