@@ -46,57 +46,57 @@
                 The merchant name that will appear on your credit card statement is DISCOUNT VACATION COST 08778670114 NV 89119 USA
             </div>
 
-            <h5 class="mt-4 fw-bold">Your Vacation Package Includes:</h5>
-            <table class="table table-bordered text-center small">
-                <thead class="table-light">
-                <tr>
-                    <th>Destination</th>
-                    <th>Arrival Date</th>
-                    <th>Plan Type</th>
-                    <th>No. of Nights</th>
-                    <th>Certificate Comments</th>
-                    <th>Gifts</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>Mexico</td>
-                    <td>OPEN</td>
-                    <td>All Inclusive</td>
-                    <td>4</td>
-                    <td></td>
-                    <td>{{$confirmation->package}}</td>
-                </tr>
-                </tbody>
-            </table>
+{{--            <h5 class="mt-4 fw-bold">Your Vacation Package Includes:</h5>--}}
+{{--            <table class="table table-bordered text-center small">--}}
+{{--                <thead class="table-light">--}}
+{{--                <tr>--}}
+{{--                    <th>Destination</th>--}}
+{{--                    <th>Arrival Date</th>--}}
+{{--                    <th>Plan Type</th>--}}
+{{--                    <th>No. of Nights</th>--}}
+{{--                    <th>Certificate Comments</th>--}}
+{{--                    <th>Gifts</th>--}}
+{{--                </tr>--}}
+{{--                </thead>--}}
+{{--                <tbody>--}}
+{{--                <tr>--}}
+{{--                    <td>Mexico</td>--}}
+{{--                    <td>OPEN</td>--}}
+{{--                    <td>All Inclusive</td>--}}
+{{--                    <td>4</td>--}}
+{{--                    <td></td>--}}
+{{--                    <td>{{$confirmation->package}}</td>--}}
+{{--                </tr>--}}
+{{--                </tbody>--}}
+{{--            </table>--}}
 
-            <p><strong>Note:</strong> Certificate covers 2 adults and 2 kids under 12. Additional costs apply for extras.</p>
+{{--            <p><strong>Note:</strong> Certificate covers 2 adults and 2 kids under 12. Additional costs apply for extras.</p>--}}
 
-            <h5 class="fw-bold mt-4">Terms and Conditions</h5>
-            <p>This is a one-time promotional offer. Everyone included in the Mexico reservation must attend a 90-minute breakfast and presentation.
-                You cannot use this package at the same location and around the same time as family or friends who are also traveling on a promotional deal.
-                If your family or friends are scheduled to attend the same presentation during overlapping dates, your package will no longer be valid unless you pay a higher nightly rate to keep the reservation.
-                This rule does not apply if you're traveling with Universal Vacation Club members using their membership.
-                Villa Group members are not eligible to use this package.</p>
+{{--            <h5 class="fw-bold mt-4">Terms and Conditions</h5>--}}
+{{--            <p>This is a one-time promotional offer. Everyone included in the Mexico reservation must attend a 90-minute breakfast and presentation.--}}
+{{--                You cannot use this package at the same location and around the same time as family or friends who are also traveling on a promotional deal.--}}
+{{--                If your family or friends are scheduled to attend the same presentation during overlapping dates, your package will no longer be valid unless you pay a higher nightly rate to keep the reservation.--}}
+{{--                This rule does not apply if you're traveling with Universal Vacation Club members using their membership.--}}
+{{--                Villa Group members are not eligible to use this package.</p>--}}
 
-            <h5 class="fw-bold">Cancellation Policy</h5>
-            <p>You have 24 hours to cancel without any penalty by calling 888-592-0021 or emailing bookings@greenescapestravel.com
-                If you’re unable to use the certificate, it can be transferred to another qualified person.
-                Cancellations made after the 24-hour window will incur a $149 cancellation fee.
-                Please note, once the original expiration date has passed, the package becomes non-refundable.
-            </p>
+{{--            <h5 class="fw-bold">Cancellation Policy</h5>--}}
+{{--            <p>You have 24 hours to cancel without any penalty by calling 888-592-0021 or emailing bookings@greenescapestravel.com--}}
+{{--                If you’re unable to use the certificate, it can be transferred to another qualified person.--}}
+{{--                Cancellations made after the 24-hour window will incur a $149 cancellation fee.--}}
+{{--                Please note, once the original expiration date has passed, the package becomes non-refundable.--}}
+{{--            </p>--}}
 
-            <h5 class="fw-bold"> Re-Scheduling Policy</h5>
-            <p>Any changes made to your reservation after the initial booking may incur a processing fee and are dependent on hotel room availability. Please note that Resort Fees and White Glove Service charges are non-refundable. These fees must be discussed directly with the Reservations department.
-            </p>
+{{--            <h5 class="fw-bold"> Re-Scheduling Policy</h5>--}}
+{{--            <p>Any changes made to your reservation after the initial booking may incur a processing fee and are dependent on hotel room availability. Please note that Resort Fees and White Glove Service charges are non-refundable. These fees must be discussed directly with the Reservations department.--}}
+{{--            </p>--}}
 
-            <h5 class="fw-bold">No Show / Unused Nights</h5>
-            <p>No refunds for no-shows, early checkouts, or unused nights.</p>
+{{--            <h5 class="fw-bold">No Show / Unused Nights</h5>--}}
+{{--            <p>No refunds for no-shows, early checkouts, or unused nights.</p>--}}
 
-            <h5 class="fw-bold">Activation</h5>
-            <p>This email is your receipt. Please e-sign to confirm and activate your certificate.</p>
+{{--            <h5 class="fw-bold">Activation</h5>--}}
+{{--            <p>This email is your receipt. Please e-sign to confirm and activate your certificate.</p>--}}
 
-            @include('partials.e_signature', ['confirmation' => $confirmation])
+{{--            @include('partials.e_signature', ['confirmation' => $confirmation])--}}
 
         </div>
     </div>
