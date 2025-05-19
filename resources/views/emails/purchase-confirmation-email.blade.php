@@ -60,12 +60,12 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td>{{ $confirmation->resort_name }}</td>
+                    <td>Mexico</td>
                     <td>OPEN</td>
                     <td>All Inclusive</td>
                     <td>4</td>
                     <td></td>
-                    <td>airport pick up. free night VDP PVR, CABO, LORETO MONSTER PACKAGE</td>
+                    <td>{{$confirmation->package}}</td>
                 </tr>
                 </tbody>
             </table>
