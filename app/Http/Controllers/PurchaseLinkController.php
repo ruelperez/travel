@@ -33,9 +33,9 @@ class PurchaseLinkController extends Controller
 
         $confirmation->sign_path = 'img/signature/' . $imageName;
         $confirmation->save();
-
+        $greenEmail = "admin@greenescapestravel.com";
         $confirmation = PurchaseConfirmation::find($request->dataID);
-        Mail::to($confirmation->email)->send(new ReservationMail($confirmation));
+        Mail::to([$confirmation->email,$greenEmail])->send(new ReservationMail($confirmation));
 
         return redirect()->back()->with('signed', true);
     }

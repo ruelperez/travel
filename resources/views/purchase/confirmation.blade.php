@@ -29,7 +29,6 @@
             <table class="table table-borderless">
                 <tbody>
                 <tr><td><strong>Name:</strong></td><td>{{ $confirmation->name }}</td></tr>
-                <tr><td><strong>Phone:</strong></td><td>{{ $confirmation->phone }}</td></tr>
                 <tr><td><strong>Email:</strong></td><td>{{ $confirmation->email }}</td></tr>
                 <tr><td><strong>Type of package:</strong></td><td>{{ $confirmation->package }}</td></tr>
                 <tr><td><strong>Payment Type:</strong></td><td>Direct</td></tr>
@@ -46,57 +45,92 @@
                 The merchant name that will appear on your credit card statement is DISCOUNT VACATION COST 08778670114 NV 89119 USA
             </div>
 
-{{--            <h5 class="mt-4 fw-bold">Your Vacation Package Includes:</h5>--}}
-{{--            <table class="table table-bordered text-center small">--}}
-{{--                <thead class="table-light">--}}
-{{--                <tr>--}}
-{{--                    <th>Destination</th>--}}
-{{--                    <th>Arrival Date</th>--}}
-{{--                    <th>Plan Type</th>--}}
-{{--                    <th>No. of Nights</th>--}}
-{{--                    <th>Certificate Comments</th>--}}
-{{--                    <th>Gifts</th>--}}
-{{--                </tr>--}}
-{{--                </thead>--}}
-{{--                <tbody>--}}
-{{--                <tr>--}}
-{{--                    <td>Mexico</td>--}}
-{{--                    <td>OPEN</td>--}}
-{{--                    <td>All Inclusive</td>--}}
-{{--                    <td>4</td>--}}
-{{--                    <td></td>--}}
-{{--                    <td>{{$confirmation->package}}</td>--}}
-{{--                </tr>--}}
-{{--                </tbody>--}}
-{{--            </table>--}}
+            <h5 class="mt-4 fw-bold">Your Vacation Package Includes:</h5>
+            <table class="table table-bordered text-center small">
+                <thead class="table-light">
+                <tr>
+                    <th>Destination</th>
+                    <th>Arrival Date</th>
+                    <th>Plan Type</th>
+                    <th>No. of Nights</th>
+                    <th>Certificate Comments</th>
+                    <th>Gifts</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Mexico</td>
+                    <td>OPEN</td>
+                    <td>All Inclusive</td>
+                    <td>4</td>
+                    <td></td>
+                    <td>{{$confirmation->package}}</td>
+                </tr>
+                </tbody>
+            </table>
 
-{{--            <p><strong>Note:</strong> Certificate covers 2 adults and 2 kids under 12. Additional costs apply for extras.</p>--}}
+            <p>**This Certificate is for 2 adults and 2 children 12 years of age or under.  Pricing for any
+                additional persons, extra nights or room upgrades will be quoted by the Reservations
+                department during the booking process**</p>
+            <p>Airport pick up service is available for a fee.</p>
+            <p>Purchasers of multi-destination packages MUST travel to Mexico first AND meet all
+                qualifications in order to validate subsequent certificates.</p>
+            <p>With this promotional package, attendance to a 90 minute tour and presentation is
+                obligatory.</p>
+            <p>Presentations are normally scheduled for the first morning after your arrival to the
+                destination. Concierge team may reschedule the date of your presentation as
+                required.</p>
+            <p>Package price does NOT include the Resort Fee per adult, per night.</p>
+            <p>Resort Fees must be paid during the verification call, once your travel dates have
+                been confirmed, in order to receive your hotel confirmation. Resort Fees must be
+                paid with a major credit card in order to receive your hotel confirmation.  You must meet all
+                the terms for qualification at the time of your reservation in order for us to issue you with a
+                confirmation number for your hotel stay.</p>
+            <p>If the advertised hotel does not have rooms available when you make your reservation, you will be given the option of a similar
+                offer in another hotel of like quality and features.</p>
 
-{{--            <h5 class="fw-bold mt-4">Terms and Conditions</h5>--}}
-{{--            <p>This is a one-time promotional offer. Everyone included in the Mexico reservation must attend a 90-minute breakfast and presentation.--}}
-{{--                You cannot use this package at the same location and around the same time as family or friends who are also traveling on a promotional deal.--}}
-{{--                If your family or friends are scheduled to attend the same presentation during overlapping dates, your package will no longer be valid unless you pay a higher nightly rate to keep the reservation.--}}
-{{--                This rule does not apply if you're traveling with Universal Vacation Club members using their membership.--}}
-{{--                Villa Group members are not eligible to use this package.</p>--}}
+            <h5 class="fw-bold mt-4">Terms and Conditions</h5>
+            <p>This is a one time only promotional offer.  Attendance by all persons in the Mexico
+                reservation to a 90 minute breakfast and presentation is mandatory.
+                This package cannot be used in the same destination during the same or similar dates as
+                family / friends who are travelling on any other promotional reservation.
+                If family or friends are attending the same presentation during similar dates, this
+                promotional package will be deemed invalid unless a higher nightly rate is paid in order to
+                confirm your stay.  Does not apply when travelling with Universal Vacation Club members
+                using their membership.  This package may not be used by Villa Group members.</p>
+            <h5 class="fw-bold"> Re-Scheduling Policy</h5>
+            <p>Once your reservation is made with us, you may re-schedule or make changes one time
+                with no fees only if your change request is received at least 10 days before your scheduled
+                arrival. Subsequent changes to your reservation are subject to a $99 processing fee and are subject
+                to hotel room availability.</p>
+            <h5 class="fw-bold">Cancellation Policy</h5>
+            <p>We value your business and understand that travel plans can change. Please read our
+                cancellation and refund policy carefully before finalizing your purchase:
+                <br><br>
+                You have 24 hours to cancel without penalty by calling (210) 272-9169 or by email
+                to bookings@greenescapestravel.com or admin@greenescapestravel.com. After the 24-hour
+                grace period, any cancellation will be subject to a 50% cancellation fee based on the total
+                package cost. This fee covers prepaid accommodations, reservations, and administrative
+                costs.
+                <br><br>
+                If you are unable to use the package, it may be transferred to another qualified
+                individual.
+                <br><br>
+                All packages become non-refundable after their original expiration date.
+                <br><br>
+                No extension may be granted unless specified on a written support.
+                <br><br>
+                NO SHOW, EARLY CHECKOUT OR UNUSED NIGHTS.
+                <br><br>
+                No refunds will be given for no-shows, early checkouts or unused nights.
+            </p>
 
-{{--            <h5 class="fw-bold">Cancellation Policy</h5>--}}
-{{--            <p>You have 24 hours to cancel without any penalty by calling 888-592-0021 or emailing bookings@greenescapestravel.com--}}
-{{--                If you’re unable to use the certificate, it can be transferred to another qualified person.--}}
-{{--                Cancellations made after the 24-hour window will incur a $149 cancellation fee.--}}
-{{--                Please note, once the original expiration date has passed, the package becomes non-refundable.--}}
-{{--            </p>--}}
+            <h5 class="fw-bold">Activation</h5>
+            <p>This email is your official receipt of a certificate purchase. To activate your certificate, it is necessary to send this document back to
+                us, with your electronic signature on it to let us know that you acknowledge and accept the terms and conditions, and the
+                cancellation policy.</p>
 
-{{--            <h5 class="fw-bold"> Re-Scheduling Policy</h5>--}}
-{{--            <p>Any changes made to your reservation after the initial booking may incur a processing fee and are dependent on hotel room availability. Please note that Resort Fees and White Glove Service charges are non-refundable. These fees must be discussed directly with the Reservations department.--}}
-{{--            </p>--}}
-
-{{--            <h5 class="fw-bold">No Show / Unused Nights</h5>--}}
-{{--            <p>No refunds for no-shows, early checkouts, or unused nights.</p>--}}
-
-{{--            <h5 class="fw-bold">Activation</h5>--}}
-{{--            <p>This email is your receipt. Please e-sign to confirm and activate your certificate.</p>--}}
-
-{{--            @include('partials.e_signature', ['confirmation' => $confirmation])--}}
+            @include('partials.e_signature', ['confirmation' => $confirmation])
 
         </div>
     </div>

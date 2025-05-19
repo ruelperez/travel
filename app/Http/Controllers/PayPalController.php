@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\AdminPurchaseConfirmationMail;
 use App\Mail\PurchaseConfirmationMail;
 use App\Models\PurchaseConfirmation;
 use Illuminate\Http\Request;
@@ -94,7 +95,6 @@ class PayPalController extends Controller
         $firstLetter = chr(ord('A') + (($count - 1) / 26) % 26);
         $secondLetter = chr(ord('A') + ($count - 1) % 26);
         $certNumber = "{$prefix}-{$number}-{$firstLetter}{$secondLetter}";
-
         PurchaseConfirmation::create([
             'name' => $details['payer']['name']['given_name'] . ' ' . $details['payer']['name']['surname'] ?? null,
             'email' => $details['payer']['email_address'] ?? null,
@@ -113,11 +113,14 @@ class PayPalController extends Controller
             'linkID' => $linkId,
             'cert_number' => $certNumber,
         ]);
+        $customerName = $details['payer']['name']['given_name'] . ' ' . $details['payer']['name']['surname'];
+        $customerPhone = $phone;
         $payLink = url('/purchase-confirmation/' . $linkId);
         $payers_email = $details['payer']['email_address'] ?? null;
+        $admin_email = "admin@greenescapestravel.com";
         // Send email
         Mail::to($payers_email)->send(new PurchaseConfirmationMail($payLink));
-
+        Mail::to($admin_email)->send(new AdminPurchaseConfirmationMail($customerName, $certNumber, $payLink));
 
         return view('paypal.success', [
             'details' => $details ?? null,
